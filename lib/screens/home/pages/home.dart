@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:prescamai/screens/home/widgets/home_appbar.dart";
+import "package:prescamai/screens/home/widgets/home_leaderboards_card.dart";
+import "package:prescamai/screens/home/widgets/home_scam_list.dart";
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -13,7 +15,10 @@ class Home extends StatelessWidget {
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 5),
               child: HomeAppBar()),
-          Expanded(child: Container()),
+          SizedBox(height: 30),
+          HomeLeaderboardsCard(),
+          SizedBox(height: 30),
+          Expanded(child: HomeScamList()),
         ],
       ),
     );
