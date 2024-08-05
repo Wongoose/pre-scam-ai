@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
 import "package:prescamai/screens/auth/pages/auth_wrapper.dart";
@@ -10,6 +11,7 @@ import "package:overlay_support/overlay_support.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load();
   await GetStorage.init();
   // NOTE: Haven't implemented backend
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
