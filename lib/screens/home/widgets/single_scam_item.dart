@@ -22,12 +22,12 @@ class SingleScamItem extends StatelessWidget {
       child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 40,
-              width: 40,
-              padding: EdgeInsets.all(5),
+              height: 50,
+              width: 50,
+              padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Theme.of(context).primaryColor.withOpacity(0.1)),
@@ -48,12 +48,13 @@ class SingleScamItem extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    "Romance scams are a threat to anyone seeking love online",
+                    "Romance scams are a threat to anyone seeking love online. Rebecca, a single female acts as an innocent woman at first.",
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w300,
                         overflow: TextOverflow.ellipsis,
                         color: themeService.textColor),
+                    maxLines: 2,
                   ),
                   SizedBox(height: 4),
                   Chip(
@@ -61,13 +62,13 @@ class SingleScamItem extends StatelessWidget {
                       "Not started",
                       style: TextStyle(
                           fontSize: 10,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w400,
                           overflow: TextOverflow.ellipsis,
-                          color: themeService.textColor),
+                          color: Colors.red[400]),
                     ),
-                    backgroundColor: Colors.red,
-                    padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                    backgroundColor: Theme.of(context).cardColor,
                     labelPadding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+                    side: BorderSide(color: Colors.red[400]!),
                   ),
                 ],
               ),

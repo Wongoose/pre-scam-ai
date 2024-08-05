@@ -42,7 +42,7 @@ class TheHillApp extends StatelessWidget {
           );
         },
         home: FutureBuilder(
-          future: delaySeconds(3),
+          future: delaySeconds(0),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
             } else if (snapshot.connectionState == ConnectionState.done) {

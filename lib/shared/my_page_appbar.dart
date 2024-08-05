@@ -21,12 +21,15 @@ class MyPageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
           onTap: backFunction ?? () => Get.back(),
           behavior: HitTestBehavior.translucent,
           child: Container(
+            height: 50,
+            width: 50,
             alignment: Alignment.center,
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(

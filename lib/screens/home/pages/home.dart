@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 5),
               child: HomeAppBar()),
-          SizedBox(height: 30),
+          SizedBox(height: 20),
           HomeLeaderboardsCard(),
           SizedBox(height: 30),
           Expanded(child: HomeScamList()),
