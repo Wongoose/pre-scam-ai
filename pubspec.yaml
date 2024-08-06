@@ -35,6 +35,7 @@ flutter:
     - assets/images/
     - assets/html/
     - .env
+    - assets/top10scams.json
 
   fonts:
     - family: Nunito
