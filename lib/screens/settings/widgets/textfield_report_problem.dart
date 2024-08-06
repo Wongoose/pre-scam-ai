@@ -9,8 +9,8 @@ class TextFieldReportProblem extends StatelessWidget {
 
   TextFieldReportProblem({
     this.textController,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

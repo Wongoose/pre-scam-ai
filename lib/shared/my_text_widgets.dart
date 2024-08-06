@@ -8,7 +8,7 @@ class MyText extends StatelessWidget {
   final Color? color;
   final double? fontSize;
   final TextAlign? textAlign;
-  MyText(this.text, {Key? key, this.color, this.fontSize, this.textAlign}) : super(key: key);
+  MyText(this.text, {super.key, this.color, this.fontSize, this.textAlign});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class MyTextBolded extends StatelessWidget {
   final double? fontSize;
   final TextAlign? textAlign;
 
-  MyTextBolded(this.text, {this.color, this.fontSize, Key? key, this.textAlign}) : super(key: key);
+  MyTextBolded(this.text, {this.color, this.fontSize, super.key, this.textAlign});
 
   @override
   Widget build(BuildContext context) {

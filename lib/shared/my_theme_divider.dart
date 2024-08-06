@@ -8,13 +8,13 @@ class ThemedDivider extends StatelessWidget {
   final Color? color;
 
   const ThemedDivider({
-    Key? key,
+    super.key,
     this.height = 16.0,
     this.thickness = 0.5,
     this.indent = 0,
     this.endIndent = 0,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +33,12 @@ class ThemedVerticalDivider extends StatelessWidget {
   final Color? color;
 
   const ThemedVerticalDivider({
-    Key? key,
+    super.key,
     this.thickness = 0.5,
     this.indent = 12.0,
     this.endIndent = 12.0,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

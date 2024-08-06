@@ -12,13 +12,13 @@ class MyConfirmDialog extends StatelessWidget {
   final VoidCallback? actionFunction;
 
   const MyConfirmDialog({
-    Key? key,
+    super.key,
     required this.title,
     required this.body,
     required this.actionText,
     this.actionColor,
     this.actionFunction,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

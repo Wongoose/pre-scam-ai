@@ -9,11 +9,11 @@ class MyExpandedButton extends StatelessWidget {
   final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   MyExpandedButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onPressFunc,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

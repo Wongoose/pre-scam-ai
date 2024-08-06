@@ -9,7 +9,7 @@ class SettingsFAQPage extends StatelessWidget {
     ["How do I register a new visitor?", "Lorem ipsum"],
     ["Why does the app require my phone number?", "Lorem ipsum"],
   ];
-  SettingsFAQPage({Key? key}) : super(key: key);
+  SettingsFAQPage({super.key});
 
   @override
   Widget build(BuildContext context) {
