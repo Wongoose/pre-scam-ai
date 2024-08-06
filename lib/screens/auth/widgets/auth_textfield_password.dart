@@ -13,8 +13,8 @@ class AuthTextFieldPassword extends StatefulWidget {
     this.passwordController,
     this.showPrefixIcon = true,
     this.hintText,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<AuthTextFieldPassword> createState() => _AuthTextFieldPasswordState();

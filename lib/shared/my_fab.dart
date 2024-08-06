@@ -1,7 +1,5 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import "package:get/get.dart";
-import "package:prescamai/chat/pages/chat_main.dart";
 
 class MyFAB extends StatelessWidget {
   @override
@@ -10,7 +8,8 @@ class MyFAB extends StatelessWidget {
       height: 70,
       width: 70,
       child: FloatingActionButton(
-        onPressed: () => Get.to(() => ChatPage()),
+        onPressed: () {},
+        // onPressed: () => Get.to(() => ChatPage()),
         backgroundColor: Theme.of(context).primaryColor,
         shape: CircleBorder(),
         child: Icon(

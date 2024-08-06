@@ -4,7 +4,7 @@ import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/screens/home/pages/home.dart";
 import "package:prescamai/screens/settings/pages/settings_main.dart";
 import "package:prescamai/shared/my_bottom_navbar.dart";
-import "package:prescamai/shared/my_fab.dart";
+// import "package:prescamai/shared/my_fab.dart";
 
 class HomeWrapper extends StatefulWidget {
   const HomeWrapper({super.key});
@@ -30,8 +30,8 @@ class _HomeWrapperState extends State<HomeWrapper> {
             SettingsMain(),
           ],
         ),
-        floatingActionButton: MyFAB(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        // floatingActionButton: MyFAB(),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         bottomNavigationBar: MyBottomNavBar(pageController: pageController),
       ),
     );

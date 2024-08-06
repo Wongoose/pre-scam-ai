@@ -4,6 +4,9 @@ class Scam {
   final String img;
   final String description;
   final String longDescription;
+  final String aiIdentity;
+  final String exampleInput;
+  final String exampleModel;
   final int count;
   final List<String> identify;
 
@@ -13,6 +16,9 @@ class Scam {
     required this.img,
     required this.description,
     required this.longDescription,
+    required this.aiIdentity,
+    required this.exampleInput,
+    required this.exampleModel,
     required this.count,
     required this.identify,
   });
@@ -24,6 +30,9 @@ class Scam {
       img: json["img"] as String,
       description: json["description"] as String,
       longDescription: json["longDescription"] as String,
+      aiIdentity: (json["aiIdentity"] ?? "") as String,
+      exampleInput: (json["exampleInput"] ?? "") as String,
+      exampleModel: (json["exampleModel"] ?? "") as String,
       count: json["count"] as int,
       identify: List<String>.from(json["identify"]),
     );
@@ -36,6 +45,9 @@ class Scam {
       "img": img,
       "description": description,
       "longDescription": longDescription,
+      "aiIdentity": aiIdentity,
+      "exampleInput": exampleInput,
+      "exampleModel": exampleModel,
       "count": count,
       "identify": identify,
     };

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:prescamai/chat/pages/chat_main.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/models/scam_model.dart";
 
@@ -16,7 +17,7 @@ class SingleScamItem extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       // onTap: () => Get.dialog(VisitorInfoDialog(visitor: visitor, showArrivalStatus: upcoming)),
-      onTap: () {},
+      onTap: () => Get.to(() => ChatPage(scam: scam)),
       child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,

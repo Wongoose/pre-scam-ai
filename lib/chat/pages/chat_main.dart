@@ -3,10 +3,12 @@ import "package:flutter_chat_ui/flutter_chat_ui.dart";
 import "package:get/get.dart";
 import "package:prescamai/controllers/chat_ai_controller.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
+import "package:prescamai/models/scam_model.dart";
 import "package:prescamai/shared/my_page_appbar.dart";
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({super.key});
+  final Scam scam;
+  const ChatPage({super.key, required this.scam});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -20,7 +22,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    chatAIController.initialize();
+    chatAIController.initialize(widget.scam);
     chatAIController.loadMessages();
   }
 
@@ -45,13 +47,13 @@ class _ChatPageState extends State<ChatPage> {
               padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
               child: MyPageAppBar(
                 appBarType: MyAppBarType.back,
-                title: "Romance Scam",
+                title: widget.scam.title,
               ),
             ),
           ),
         ),
         body: Obx(() {
-          print(chatAIController.messages);
+          print(chatAIController.messages.isEmpty);
           return Chat(
             messages: chatAIController.messages,
             onSendPressed: chatAIController.handleSendPressed,
