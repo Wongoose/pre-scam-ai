@@ -33,7 +33,7 @@ class TheHillApp extends StatelessWidget {
         transitionDuration: Duration(milliseconds: 300),
         defaultTransition: Transition.rightToLeft,
         debugShowCheckedModeBanner: false,
-        title: "Pre-Scam AI",
+        title: "PreScam.AI",
         themeMode: MyThemeServiceController().themeMode,
         theme: MyThemeServiceController.light,
         darkTheme: MyThemeServiceController.dark,

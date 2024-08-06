@@ -28,7 +28,7 @@ class AuthHome extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  "Pre-Scam AI",
+                  "PreScam.AI",
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ class AuthHome extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "AI Powered Scam Simulator",
+                  "AI Vaccine for Scams",
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
