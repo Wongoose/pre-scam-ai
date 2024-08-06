@@ -24,8 +24,8 @@ class SingleScamItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 75,
-              width: 60,
+              height: 65,
+              width: 65,
               // padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
