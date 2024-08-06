@@ -1,5 +1,3 @@
-import "dart:convert";
-import "package:flutter/services.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:get/get.dart";
 import "package:flutter_chat_types/flutter_chat_types.dart" as types;
@@ -11,21 +9,13 @@ enum ChatScamType { romance, pishing, none }
 class ChatAIController extends GetxController {
   RxList<types.Message> messages = RxList<types.Message>();
   ChatScamType scamType = ChatScamType.none;
-  // NEXT: Use Auth UID
-  final types.User user =
-      const types.User(id: "82091008-a484-4a89-ae75-a22bf8d6f3ac");
-  final types.User bot = const types.User(id: "bot");
+  final types.User user = types.User(id: "user");
+  final types.User bot = types.User(id: "bot");
 
-// AI params
+  // AI params
   final String? _apiKey = dotenv.env["GEMINI_API_KEY"];
   late GenerativeModel model;
   late ChatSession chat;
-
-  String replacePlaceholders(String responseText) {
-    return responseText
-        .replaceAll("specific amount", "Account Number: 987654321")
-        .replaceAll("[example amount]", "USD 1000");
-  }
 
   void initialize() {
     model = GenerativeModel(
@@ -33,7 +23,9 @@ class ChatAIController extends GetxController {
       apiKey: apiKey,
       safetySettings: [
         SafetySetting(HarmCategory.harassment, HarmBlockThreshold.none),
-        SafetySetting(HarmCategory.sexuallyExplicit, HarmBlockThreshold.none)
+        SafetySetting(HarmCategory.sexuallyExplicit, HarmBlockThreshold.none),
+        SafetySetting(HarmCategory.dangerousContent, HarmBlockThreshold.none),
+        SafetySetting(HarmCategory.hateSpeech, HarmBlockThreshold.none)
       ],
       generationConfig: GenerationConfig(
         temperature: 1,
@@ -54,7 +46,7 @@ class ChatAIController extends GetxController {
       ]),
       Content.model([
         TextPart(
-            "I came across your profile and thought you seemed really interesting. Mind if we chat for a bit? \n"),
+            "Hi, I came across your profile and thought you seemed really interesting. Mind if we chat for a bit? 😊 \n"),
       ]),
     ]);
   }
@@ -69,24 +61,31 @@ class ChatAIController extends GetxController {
   }
 
   // Functions
-  void loadMessages() async {
-    try {
-      // Get from
-      final response = await rootBundle.loadString("assets/messages.json");
-      final result = (jsonDecode(response) as List)
-          .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
-          .toList();
-      messages.value = result;
-    } catch (err) {
-      print("Empty");
-    }
+  Future<void> loadMessages() async {
+    generateAIresponse("");
   }
 
   void addMessage(types.Message message) {
     messages.insert(0, message);
   }
 
-  void handleSendPressed(types.PartialText message) async {
+  void removeMessage(types.Message message) {
+    messages.remove(message);
+  }
+
+  Future<void> typingLoading(int milliseconds) async {
+    final types.TextMessage loadingMessage = types.TextMessage(
+      author: bot,
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      id: const Uuid().v4(),
+      text: "Typing...",
+    );
+    addMessage(loadingMessage);
+    await Future.delayed(Duration(milliseconds: milliseconds));
+    removeMessage(loadingMessage);
+  }
+
+  Future<void> handleSendPressed(types.PartialText message) async {
     final types.TextMessage textMessage = types.TextMessage(
       author: user,
       createdAt: DateTime.now().millisecondsSinceEpoch,
@@ -95,31 +94,35 @@ class ChatAIController extends GetxController {
     );
 
     addMessage(textMessage);
-    generateAIresponse(textMessage.text);
+    await generateAIresponse(textMessage.text);
   }
 
-  void generateAIresponse(String userInput) async {
+  Future<void> generateAIresponse(String userInput) async {
     try {
+      // Generate AI response
       final content = Content.text(userInput);
 
-      // Generate AI response
-      // NEXT: Add chat bubble
       final GenerateContentResponse aiResponse =
           await chat.sendMessage(content);
-      print(aiResponse.text);
       final types.TextMessage textMessage = types.TextMessage(
         author: bot,
         createdAt: DateTime.now().millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: aiResponse.text ?? "I am sorry, I don't understand your input.",
+        text: aiResponse.text!.trim(),
       );
 
-      // NEXT: Delay based on response length
-      await Future.delayed(Duration(seconds: 1));
+      await typingLoading(aiResponse.text!.length * 50);
       addMessage(textMessage);
-      // Print response (or handle it in your application)
     } catch (err) {
       print("AI response was blocked due to safety settings: $err");
+      final types.TextMessage textMessage = types.TextMessage(
+          author: bot,
+          createdAt: DateTime.now().millisecondsSinceEpoch,
+          id: const Uuid().v4(),
+          text:
+              "Sorry, I couldn't understand what you meant. Could you repeat what you said?");
+      await Future.delayed(Duration(seconds: 1));
+      addMessage(textMessage);
     }
   }
 }
