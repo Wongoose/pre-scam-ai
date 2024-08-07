@@ -17,4 +17,6 @@
 3. Authentication + Profile page [3 points]
 4. Points + Leaderboard system (Firebase) [5 points]
 5. Gradient background [3 points]
-
+6. Onboarding process
+7. Splash screen + completion animation
+8. Implement Voice, Image AI
