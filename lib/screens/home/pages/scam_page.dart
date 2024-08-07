@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:prescamai/chat/pages/chat_main.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/models/scam_model.dart";
-import "package:prescamai/screens/home/widgets/home_leaderboards_card.dart";
+import "package:prescamai/screens/home/widgets/scam_detail_card.dart";
 import "package:prescamai/shared/my_fab.dart";
 import "package:prescamai/shared/my_page_appbar.dart";
 
@@ -30,11 +30,26 @@ class ScamPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(25, 32, 25, 32),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           MyPageAppBar(
                               title: "PreScam.AI",
                               appBarType: MyAppBarType.xmark),
+                          SizedBox(height: 10),
+                          Chip(
+                            label: Text(
+                              "NOT COMPLETED",
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  overflow: TextOverflow.ellipsis,
+                                  color: Colors.red[400]),
+                            ),
+                            backgroundColor:
+                                Theme.of(context).scaffoldBackgroundColor,
+                            labelPadding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+                            side: BorderSide(color: Colors.red[400]!),
+                          ),
                           SizedBox(height: 10),
                           Center(
                             child: Container(
@@ -51,17 +66,15 @@ class ScamPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Center(
-                            child: Text(
-                              scam.title,
-                              style: TextStyle(
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.bold,
-                                  color: themeService.textColor),
-                            ),
+                          Text(
+                            scam.title,
+                            style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: themeService.textColor),
                           ),
                           SizedBox(height: 30),
-                          HomeLeaderboardsCard(),
+                          ScamDetailCard(),
                           SizedBox(height: 30),
                           Card(
                             color: Theme.of(context).cardColor,
@@ -162,7 +175,7 @@ class ScamPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 80),
+                          SizedBox(height: 60),
                         ],
                       ),
                     ),
