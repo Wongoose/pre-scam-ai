@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:prescamai/chat/pages/chat_main.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/models/scam_model.dart";
 import "package:prescamai/screens/home/widgets/home_leaderboards_card.dart";
+import "package:prescamai/shared/my_fab.dart";
 import "package:prescamai/shared/my_page_appbar.dart";
 
 class ScamPage extends StatelessWidget {
@@ -75,7 +77,7 @@ class ScamPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Description",
+                                      "What is this?",
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
@@ -160,6 +162,7 @@ class ScamPage extends StatelessWidget {
                               ),
                             ),
                           ),
+                          SizedBox(height: 80),
                         ],
                       ),
                     ),
@@ -171,6 +174,9 @@ class ScamPage extends StatelessWidget {
             ),
           ],
         ),
+        floatingActionButton:
+            MyFAB(onPressedFunc: () => Get.to(() => ChatPage(scam: scam))),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
   }
