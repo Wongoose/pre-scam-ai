@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Phishing Scams",
-      "img": "https://www.vadesecure.com/hubfs/Email-Scams_Phishing-for-Victims-in-Election-Year-1200x800.jpg",
+      "img": "assets/icons/phishing.png",
       "description": "Cybercriminals send deceptive emails or messages that appear to be from legitimate sources, tricking individuals into revealing sensitive information like passwords or credit card numbers.",
       "longDescription": "Phishing scams can happen to anyone. One day, Alice, a diligent employee, received an email seemingly from her bank. The message stated there was suspicious activity on her account and requested her to click a link to verify her credentials. Alarmed, she clicked the link and entered her login information. Unbeknownst to her, it was a phishing scam. The attackers gained access to her bank account and stole her savings. Alice's story serves as a stark reminder of how convincing phishing emails can be and how anyone can fall prey to them.",
       "count": 7097,
@@ -18,7 +18,7 @@
     {
       "id": "2",
       "title": "Tech Support Scams",
-      "img": "https://1.bp.blogspot.com/-Xm0IJFvXgsg/XM1blyo3I-I/AAAAAAAAEI8/B7BmCHzIPvwGTl72I9qt0PfkcngefbxZgCLcBGAs/s1600/tech-support-scam.jpg",
+      "img": "assets/icons/technical-support.png",
       "description": "Scammers impersonate tech support representatives from reputable companies, claiming there's a problem with the victim's computer and demanding payment for fixing it.",
       "longDescription": "Tech support scams can victimize even the most cautious individuals. Sarah, a retiree, received a call from someone claiming to be a Microsoft support technician. They convinced her that her computer was infected with a virus and needed immediate repair. To resolve the issue, they demanded a substantial fee. Worried about her personal data, Sarah complied and paid the scammers. Unfortunately, her computer was never infected, and she had fallen for a tech support scam. Sarah's story highlights the need for verifying the authenticity of unsolicited tech support calls.",
       "count": 6492,
@@ -32,7 +32,7 @@
     {
       "id": "3",
       "title": "Online Shopping Scams",
-      "img": "https://australiancybersecuritymagazine.com.au/wp-content/uploads/2021/11/img_A-ScamWatch-Alert.jpg",
+      "img": "assets/icons/online-shopping.png",
       "description": "Fake online stores offer products at incredibly low prices, often taking payment without delivering any goods or providing counterfeit products.",
       "longDescription": "Online shopping scams can target anyone searching for a good deal. Michael, an enthusiastic online shopper, stumbled upon a website offering high-end electronics at unbelievably low prices. Excited, he placed an order but never received the products. The online store vanished, and Michael realized he had fallen victim to an online shopping scam. His story serves as a warning that even savvy shoppers can be deceived by fraudulent online stores.",
       "count": 4762,
@@ -46,7 +46,7 @@
     {
       "id": "4",
       "title": "Romance Scams",
-      "img": "https://dfpi.ca.gov/wp-content/uploads/sites/337/2023/02/Shutterstock_1918234223-1.jpg",
+      "img": "assets/icons/love.png",
       "description": "Fraudsters create fake online personas to establish romantic relationships with victims, eventually asking for money or personal information under false pretenses.",
       "longDescription": "Romance scams are a threat to anyone seeking love online. Rebecca, a single professional, met 'Alex' on a dating site. Over time, they developed a deep connection, and 'Alex' shared stories of financial hardship. Wanting to help, Rebecca sent 'Alex' a significant sum of money. However, 'Alex' was a fictitious character created by a romance scammer. Rebecca's story is a heartbreaking example of how emotional vulnerability can be exploited in online scams.",
       "count": 3108,
@@ -60,7 +60,7 @@
     {
       "id": "5",
       "title": "Investment/Fake ICO Scams",
-      "img": "https://saitsa.com/wp-content/uploads/brizy/imgs/Untitled-design-2023-03-06T140344.173-2340x1961x0x102x2340x1756x1678140254.png",
+      "img": "assets/icons/investment.png",
       "description": "Individuals are lured into investing in fake or non-existent cryptocurrencies or initial coin offerings (ICOs), resulting in financial losses.",
       "longDescription": "Investment scams can ensnare even the most financially savvy individuals. James, an experienced cryptocurrency enthusiast, came across an ICO promising astronomical returns. Excited about the opportunity, he invested a substantial amount. However, the ICO was a scam, and James lost his entire investment. His story underscores the importance of thorough research and due diligence in the world of cryptocurrency investments.",
       "count": 2106,
@@ -74,7 +74,7 @@
     {
       "id": "6",
       "title": "IRS or Tax Scams",
-      "img": "https://i2.cdn.turner.com/money/dam/assets/150122071202-dirty-dozen-irs-scam-1-640x640.jpg",
+      "img": "assets/icons/tax.png",
       "description": "Scammers impersonate tax authorities and threaten victims with legal action or arrest if they don't pay alleged back taxes immediately.",
       "longDescription": "IRS scams can target anyone, regardless of their tax history. Kevin, a law-abiding citizen, received a call from someone claiming to be from the IRS. They asserted he owed back taxes and would face immediate legal consequences if he didn't pay. Panicked, Kevin complied and transferred a substantial sum. Later, he discovered it was an IRS scam, and he had fallen victim to the fraud. Kevin's story underscores the importance of verifying tax-related calls with official sources.",
       "count": 1696,
@@ -88,7 +88,7 @@
     {
       "id": "7",
       "title": "Lottery or Prize Scams",
-      "img": "https://blog.avast.com/hubfs/lottery_scams.2.jpg",
+      "img": "assets/icons/online-lottery.png",
       "description": "Victims receive notifications claiming they've won a lottery or prize and are asked to pay fees or provide personal information to claim their winnings.",
       "longDescription": "Lottery scams can deceive anyone in pursuit of good fortune. Emily received an email stating she had won a luxury vacation in a lottery she never entered. To claim the prize, she was asked to pay a processing fee upfront. Eager for the vacation, Emily paid the fee but never received any prize. It was a lottery scam, and Emily learned that legitimate lotteries never require upfront payments.",
       "count": 1031,
@@ -102,7 +102,7 @@
     {
       "id": "8",
       "title": "Charity Scams",
-      "img": "https://www.harbortg.com/hubfs/csm_socialengineering_grn_a5d92ecb20.png",
+      "img": "assets/icons/charity.png",
       "description": "Scammers pose as charitable organizations, soliciting donations for fake causes or disaster relief efforts.",
       "longDescription": "Charity scams can exploit anyone's generosity. John received a call from someone claiming to represent a disaster relief fund. They asked for donations to help victims of a recent natural disaster. Wanting to help, John donated a significant amount. Later, he found out it was a charity scam. John’s story highlights the importance of verifying charitable organizations before donating.",
       "count": 865,
@@ -116,7 +116,7 @@
     {
       "id": "9",
       "title": "Ransomware Scams",
-      "img": "https://www.avepoint.com/blog/wp-content/uploads/2021/06/businessman-hand-holding-money-banknote-for-paying-the-key-from-for-vector-id681203088-696x493.jpg",
+      "img": "assets/icons/virus.png",
       "description": "Malicious software encrypts a victim's data, and attackers demand a ransom in exchange for the decryption key, with no guarantee they will provide it even if paid.",
       "longDescription": "Ransomware attacks can happen to anyone using a computer. Linda, a small business owner, fell victim when her company's computers were infected. Desperate to regain access to critical business data, she paid the ransom. However, the attackers never provided the decryption key, leaving Linda with data loss and financial damage. Her story underscores the importance of robust cybersecurity measures to prevent ransomware attacks.",
       "count": 512,
@@ -130,7 +130,7 @@
     {
       "id": "10",
       "title": "Job / WFH Scams",
-      "img": "https://media.kasperskydaily.com/wp-content/uploads/sites/102/2023/01/24000632/2023-job-scams-and-how-to-avoid-them-featured-1500x986.jpg",
+      "img": "assets/icons/job-search.png",
       "description": "Scammers offer fake job opportunities, asking for upfront payments for training or equipment.",
       "longDescription": "Employment scams can deceive job seekers. Lisa, a recent graduate, applied for a job she found online. The employer offered her the position but required an upfront payment for training materials. Eager to start her career, Lisa paid the fee but never heard back. She realized she had fallen for an employment scam. Lisa's story highlights the importance of verifying job offers and being wary of upfront payments.",
       "count": 452,

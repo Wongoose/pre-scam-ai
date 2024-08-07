@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:prescamai/chat/pages/chat_main.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/models/scam_model.dart";
+import "package:prescamai/screens/home/pages/scam_page.dart";
 
 class SingleScamItem extends StatelessWidget {
   final Scam scam;
@@ -16,8 +16,7 @@ class SingleScamItem extends StatelessWidget {
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      // onTap: () => Get.dialog(VisitorInfoDialog(visitor: visitor, showArrivalStatus: upcoming)),
-      onTap: () => Get.to(() => ChatPage(scam: scam)),
+      onTap: () => Get.to(() => ScamPage(scam: scam)),
       child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -26,13 +25,13 @@ class SingleScamItem extends StatelessWidget {
             Container(
               height: 65,
               width: 65,
-              // padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Theme.of(context).primaryColor.withOpacity(0.1)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Image.network(
+                child: Image.asset(
                   scam.img,
                   fit: BoxFit.cover,
                 ),
