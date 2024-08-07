@@ -23,7 +23,8 @@ class MySettingsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final MyThemeServiceController themeService =
+        Get.put(MyThemeServiceController());
 
     return GestureDetector(
       onTap: onPressed,
@@ -35,10 +36,14 @@ class MySettingsItem extends StatelessWidget {
           color: Theme.of(context).cardColor,
         ),
         child: Row(children: [
-          Icon(itemIcon, color: color ?? Theme.of(context).primaryColor, size: 20),
+          Icon(itemIcon,
+              color: color ?? Theme.of(context).primaryColor, size: 20),
           SizedBox(width: 10),
           Text(text,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: color ?? themeService.textColor)),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: color ?? themeService.textColor)),
           Expanded(child: Container()),
           itemAction == MySettingsItemAction.none
               ? Container()
@@ -48,13 +53,19 @@ class MySettingsItem extends StatelessWidget {
                       padding: EdgeInsets.all(0),
                       child: Switch(
                           activeColor: Theme.of(context).colorScheme.secondary,
-                          trackColor: WidgetStateProperty.all(Theme.of(context).scaffoldBackgroundColor),
-                          thumbColor: WidgetStateProperty.all(Theme.of(context).colorScheme.secondary),
-                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          trackColor: WidgetStateProperty.all(
+                              Theme.of(context).scaffoldBackgroundColor),
+                          trackOutlineColor: WidgetStateProperty.all(
+                              Theme.of(context).scaffoldBackgroundColor),
+                          thumbColor: WidgetStateProperty.all(
+                              Theme.of(context).colorScheme.secondary),
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
                           value: themeService.themeMode == ThemeMode.dark,
                           onChanged: (value) => themeService.switchTheme()),
                     )
-                  : Icon(CupertinoIcons.forward, color: color ?? themeService.textColor),
+                  : Icon(CupertinoIcons.forward,
+                      color: color ?? themeService.textColor),
         ]),
       ),
     );

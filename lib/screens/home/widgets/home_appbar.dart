@@ -52,7 +52,7 @@ class HomeAppBar extends StatelessWidget {
                   ),
                   SizedBox(height: 2.5),
                   Text(
-                    "Leaderboards",
+                    "PreScam.AI",
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,

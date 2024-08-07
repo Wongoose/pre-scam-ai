@@ -4,7 +4,9 @@ import "package:get_storage/get_storage.dart";
 
 class MyThemeServiceController extends GetxController {
   // define light and dark theme data
-  static final ThemeData light = ThemeData.light().copyWith(
+  static final ThemeData light = ThemeData(
+    fontFamily: "Nunito",
+  ).copyWith(
     primaryColor: Color(0xFF5D42BF),
     scaffoldBackgroundColor: Color(0xFFF1EDFC),
     splashColor: Color.fromARGB(255, 11, 11, 32),
@@ -18,11 +20,12 @@ class MyThemeServiceController extends GetxController {
     hintColor: Colors.black54,
   );
 
-  static final ThemeData dark = ThemeData.dark().copyWith(
+  static final ThemeData dark = ThemeData(
+    fontFamily: "Nunito",
+  ).copyWith(
     primaryColor: Color(0xFF5D42BF),
     scaffoldBackgroundColor: Color(0xFF1a1a1a),
     splashColor: Color.fromARGB(255, 11, 11, 32),
-
     cardColor: Color(0xFF272525),
     dialogBackgroundColor: Color(0xFF272525),
     colorScheme: ColorScheme.fromSwatch().copyWith(

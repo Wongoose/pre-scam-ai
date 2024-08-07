@@ -31,7 +31,7 @@ class HomeLeaderboardsCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         color: Colors.white70),
                   ),
                   SizedBox(height: 3),
@@ -57,7 +57,7 @@ class HomeLeaderboardsCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         color: Colors.white70),
                   ),
                   SizedBox(height: 3),
@@ -83,7 +83,7 @@ class HomeLeaderboardsCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         color: Colors.white70),
                   ),
                   SizedBox(height: 3),
