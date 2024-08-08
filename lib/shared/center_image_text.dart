@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_animate/flutter_animate.dart";
 import "package:get/get.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 
@@ -15,16 +16,51 @@ class CenterImageText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final MyThemeServiceController themeService =
+        Get.put(MyThemeServiceController());
 
     return Column(
       children: [
-        Container(
-          alignment: Alignment.center,
-          child: Image(
-            height: 230,
-            image: AssetImage(imagePath),
-          ),
+        Stack(
+          alignment: AlignmentDirectional.center,
+          children: [
+            Container(
+                alignment: Alignment.center,
+                child: Image(
+                  height: 340,
+                  image: AssetImage("assets/images/trophy-background.png"),
+                )
+                    .animate()
+                    .shimmer(duration: Duration(seconds: 2))
+                    .rotate(duration: Duration(seconds: 5))
+                    .then()
+                    .shimmer(duration: Duration(seconds: 2))
+                    .rotate(duration: Duration(seconds: 5))
+                    .then()
+                    .shimmer(duration: Duration(seconds: 2))
+                    .rotate(duration: Duration(seconds: 5))
+                    .then()
+                    .shimmer(duration: Duration(seconds: 2))
+                    .rotate(duration: Duration(seconds: 5))),
+            Container(
+              alignment: Alignment.center,
+              child: Image(
+                height: 200,
+                image: AssetImage(imagePath),
+              )
+                  .animate()
+                  .shake(duration: Duration(milliseconds: 500))
+                  .shimmer(duration: Duration(seconds: 1))
+                  .then()
+                  .shimmer(duration: Duration(seconds: 1))
+                  .then()
+                  .shimmer(duration: Duration(seconds: 1))
+                  .then()
+                  .shimmer(duration: Duration(seconds: 1))
+                  .then()
+                  .shimmer(duration: Duration(seconds: 1))
+            ),
+          ],
         ),
         SizedBox(height: 20),
         Text(

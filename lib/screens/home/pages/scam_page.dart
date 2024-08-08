@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:prescamai/chat/pages/chat_main.dart";
+import "package:prescamai/screens/chat/pages/chat_main.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/models/scam_model.dart";
 import "package:prescamai/screens/home/widgets/scam_detail_card.dart";
@@ -68,6 +68,7 @@ class ScamPage extends StatelessWidget {
                           SizedBox(height: 5),
                           Text(
                             scam.title,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,

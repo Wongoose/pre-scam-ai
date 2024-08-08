@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:prescamai/screens/chat/pages/chat_complete.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 
 enum MyAppBarType { back, xmark }
@@ -46,13 +47,16 @@ class MyPageAppBar extends StatelessWidget {
             ),
           ),
         ),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.bold,
-            fontFamily: "Nunito",
-            color: themeService.textColor,
+        GestureDetector(
+          onTap: () => Get.to(() => ChatComplete(description: "You have completed and obtained the Phising Scam Award!")),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Nunito",
+              color: themeService.textColor,
+            ),
           ),
         ),
         Container(

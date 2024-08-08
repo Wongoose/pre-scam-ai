@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:prescamai/controllers/chat_ai_controller.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/models/scam_model.dart";
+import "package:prescamai/screens/chat/widgets/quiz_fab.dart";
 import "package:prescamai/shared/my_page_appbar.dart";
 
 class ChatPage extends StatefulWidget {
@@ -65,6 +66,16 @@ class _ChatPageState extends State<ChatPage> {
                 : DefaultChatTheme(),
           );
         }),
+        floatingActionButton: Obx(() {
+          return chatAIController.showQuizPrompt.value == QuizPrompt.none
+              ? Container()
+              : StartQuizFAB(
+                  onPressedFunc: () {},
+                  quizPrompt: chatAIController.showQuizPrompt.value,
+                  messageCount: 8 - chatAIController.messages.length ~/ 2,
+                );
+        }),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
       ),
     );
   }

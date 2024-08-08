@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:get/get.dart";
 import "package:flutter_chat_types/flutter_chat_types.dart" as types;
@@ -7,8 +8,11 @@ import "package:google_generative_ai/google_generative_ai.dart";
 
 enum ChatScamType { romance, pishing, none }
 
+enum QuizPrompt { none, waiting, ready }
+
 class ChatAIController extends GetxController {
   RxList<types.Message> messages = RxList<types.Message>();
+  Rx<QuizPrompt> showQuizPrompt = QuizPrompt.none.obs;
   ChatScamType scamType = ChatScamType.none;
   final types.User user = types.User(id: "user");
   final types.User bot = types.User(id: "bot");
@@ -92,6 +96,12 @@ class ChatAIController extends GetxController {
     );
 
     addMessage(textMessage);
+    // Updates when to show quiz prompt in chat
+    showQuizPrompt.value = messages.length ~/ 2 >= 8
+        ? QuizPrompt.ready
+        : messages.length ~/ 2 >= 4
+            ? QuizPrompt.waiting
+            : QuizPrompt.none;
     await generateAIresponse(textMessage.text);
   }
 
