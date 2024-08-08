@@ -1,7 +1,6 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:prescamai/screens/chat/pages/chat_complete.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 
 enum MyAppBarType { back, xmark }
@@ -10,7 +9,8 @@ class MyPageAppBar extends StatelessWidget {
   final String title;
   final MyAppBarType appBarType;
   final VoidCallback? backFunction;
-  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+  final MyThemeServiceController themeService =
+      Get.put(MyThemeServiceController());
 
   MyPageAppBar({
     super.key,
@@ -42,21 +42,20 @@ class MyPageAppBar extends StatelessWidget {
               ),
             ),
             child: Icon(
-              appBarType == MyAppBarType.back ? CupertinoIcons.back : CupertinoIcons.xmark,
+              appBarType == MyAppBarType.back
+                  ? CupertinoIcons.back
+                  : CupertinoIcons.xmark,
               color: themeService.textColor,
             ),
           ),
         ),
-        GestureDetector(
-          onTap: () => Get.to(() => ChatComplete(description: "You have completed and obtained the Phising Scam Award!")),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-              fontFamily: "Nunito",
-              color: themeService.textColor,
-            ),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Nunito",
+            color: themeService.textColor,
           ),
         ),
         Container(

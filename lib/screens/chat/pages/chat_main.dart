@@ -2,9 +2,11 @@ import "package:flutter/material.dart";
 import "package:flutter_chat_ui/flutter_chat_ui.dart";
 import "package:get/get.dart";
 import "package:prescamai/controllers/chat_ai_controller.dart";
+import "package:prescamai/controllers/quiz_controller.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/models/scam_model.dart";
 import "package:prescamai/screens/chat/widgets/quiz_fab.dart";
+import "package:prescamai/shared/my_confirm_dialog.dart";
 import "package:prescamai/shared/my_page_appbar.dart";
 
 class ChatPage extends StatefulWidget {
@@ -19,6 +21,8 @@ class _ChatPageState extends State<ChatPage> {
   final MyThemeServiceController themeService =
       Get.put(MyThemeServiceController());
   final ChatAIController chatAIController = Get.put(ChatAIController());
+  final QuizController quizController = Get.put(QuizController());
+  bool ignoreChat = false;
 
   @override
   void initState() {
@@ -49,6 +53,16 @@ class _ChatPageState extends State<ChatPage> {
               child: MyPageAppBar(
                 appBarType: MyAppBarType.back,
                 title: widget.scam.title,
+                backFunction: () => Get.dialog(MyConfirmDialog(
+                  title: "Are you sure?",
+                  body:
+                      "Chat history will not be saved. Are you sure to exit chat?",
+                  actionText: "Yes, exit.",
+                  actionFunction: () {
+                    Get.back();
+                    Get.back();
+                  },
+                )),
               ),
             ),
           ),
@@ -60,6 +74,7 @@ class _ChatPageState extends State<ChatPage> {
             onSendPressed: chatAIController.handleSendPressed,
             showUserAvatars: true,
             showUserNames: true,
+            customBottomWidget: ignoreChat ? Container() : null,
             user: chatAIController.user,
             theme: themeService.themeMode == ThemeMode.dark
                 ? DarkChatTheme()
@@ -70,7 +85,19 @@ class _ChatPageState extends State<ChatPage> {
           return chatAIController.showQuizPrompt.value == QuizPrompt.none
               ? Container()
               : StartQuizFAB(
-                  onPressedFunc: () {},
+                  onPressedFunc: () {
+                    Get.dialog(MyConfirmDialog(
+                      title: "Are you sure?",
+                      body:
+                          "Chat will end here. Are you sure to start the quiz now?",
+                      actionText: "Yes, start quiz!",
+                      actionFunction: () {
+                        Get.back();
+                        setState(() => ignoreChat = true);
+                        quizController.initialize(widget.scam);
+                      },
+                    ));
+                  },
                   quizPrompt: chatAIController.showQuizPrompt.value,
                   messageCount: 8 - chatAIController.messages.length ~/ 2,
                 );

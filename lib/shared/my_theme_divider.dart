@@ -43,6 +43,7 @@ class ThemedVerticalDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VerticalDivider(
+      width: 0,
       thickness: thickness,
       indent: indent,
       endIndent: endIndent,

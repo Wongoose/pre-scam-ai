@@ -1,3 +1,5 @@
+import "package:prescamai/models/quiz_model.dart";
+
 class Scam {
   final String id;
   final String title;
@@ -9,19 +11,20 @@ class Scam {
   final String exampleModel;
   final int count;
   final List<String> identify;
+  final List<QuizItem> quiz;
 
-  Scam({
-    required this.id,
-    required this.title,
-    required this.img,
-    required this.description,
-    required this.longDescription,
-    required this.aiIdentity,
-    required this.exampleInput,
-    required this.exampleModel,
-    required this.count,
-    required this.identify,
-  });
+  Scam(
+      {required this.id,
+      required this.title,
+      required this.img,
+      required this.description,
+      required this.longDescription,
+      required this.aiIdentity,
+      required this.exampleInput,
+      required this.exampleModel,
+      required this.count,
+      required this.identify,
+      required this.quiz});
 
   factory Scam.fromJson(Map<String, dynamic> json) {
     return Scam(
@@ -35,6 +38,9 @@ class Scam {
       exampleModel: (json["exampleModel"] ?? "") as String,
       count: json["count"] as int,
       identify: List<String>.from(json["identify"]),
+      quiz: (json["quiz"] as List)
+          .map((item) => QuizItem.fromJson(item))
+          .toList(),
     );
   }
 
@@ -50,6 +56,7 @@ class Scam {
       "exampleModel": exampleModel,
       "count": count,
       "identify": identify,
+      "quiz": quiz.map((item) => item.toJson()).toList(),
     };
   }
 }

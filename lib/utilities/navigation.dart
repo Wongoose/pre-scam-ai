@@ -71,11 +71,11 @@ Future navigateOffAllAuthHome() async {
 // }
 
 Future navigateOffAllHome() async {
-  return await Get.offAll(() => HomeWrapper(), transition: Transition.noTransition);
+  return await Get.offAll(() => HomeWrapper(), transition: Transition.zoom);
 }
 
 Future navigateOffAllWrapper() async {
-  return await Get.offAll(() => AuthWrapper(), transition: Transition.noTransition);
+  return await Get.offAll(() => AuthWrapper(), transition: Transition.zoom);
 }
 
 // Future navigateToSplashScreen() async {
