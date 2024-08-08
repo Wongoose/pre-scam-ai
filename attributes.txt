@@ -1,5 +1,6 @@
 LOGO - <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
 TROPHY - <a href="https://www.flaticon.com/free-icons/trophy" title="trophy icons">Trophy icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/summer" title="summer icons">Summer icons created by Freepik - Flaticon</a>
 LOVE - <a href="https://www.flaticon.com/free-icons/heart" title="heart icons">Heart icons created by Freepik - Flaticon</a>
 JOB - <a href="https://www.flaticon.com/free-icons/job-search" title="job search icons">Job search icons created by nawicon - Flaticon</a>
 VIRUS - <a href="https://www.flaticon.com/free-icons/flaw" title="flaw icons">Flaw icons created by Freepik - Flaticon</a>

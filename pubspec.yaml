@@ -21,13 +21,15 @@ dependencies:
   flutter_chat_types: ^3.6.2
   uuid: ^4.4.2
   google_generative_ai: ^0.4.4
-  flutter_dotenv: ^5.1.0
+  flutter_animate: ^4.5.0
+  animated_flip_counter: ^0.3.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
   flutter_launcher_icons: ^0.13.1
+  flutter_dotenv: ^5.1.0
 
 flutter_launcher_icons:
   android: "launcher_icon"
