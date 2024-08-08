@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+// ignore: depend_on_referenced_packages
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
