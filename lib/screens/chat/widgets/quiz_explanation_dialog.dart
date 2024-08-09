@@ -15,40 +15,43 @@ class ExplanationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      clipBehavior: Clip.antiAlias,
-      insetPadding: EdgeInsets.symmetric(horizontal: 60),
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        SizedBox(height: 30),
-        Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32),
-            child: MyTextBolded(
-              title,
-              fontSize: 24,
-              textAlign: TextAlign.center,
-            )),
-        SizedBox(height: 20),
-        Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32),
-            child: MyText(
-              explanation,
-              textAlign: TextAlign.center,
-            )),
-        SizedBox(height: 20),
-        Container(
-          margin: EdgeInsets.all(0),
-          width: MediaQuery.of(context).size.width,
-          height: 60,
-          color: Colors.transparent,
-          child: TextButton(
-              onPressed: onContinue,
-              child: Text("Continue",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary))),
-        ),
-      ]),
+    return PopScope(
+      canPop: false,
+      child: Dialog(
+        clipBehavior: Clip.antiAlias,
+        insetPadding: EdgeInsets.symmetric(horizontal: 60),
+        elevation: 2,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          SizedBox(height: 30),
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: MyTextBolded(
+                title,
+                fontSize: 24,
+                textAlign: TextAlign.center,
+              )),
+          SizedBox(height: 20),
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: MyText(
+                explanation,
+                textAlign: TextAlign.center,
+              )),
+          SizedBox(height: 20),
+          Container(
+            margin: EdgeInsets.all(0),
+            width: MediaQuery.of(context).size.width,
+            height: 60,
+            color: Colors.transparent,
+            child: TextButton(
+                onPressed: onContinue,
+                child: Text("Continue",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary))),
+          ),
+        ]),
+      ),
     );
   }
 }

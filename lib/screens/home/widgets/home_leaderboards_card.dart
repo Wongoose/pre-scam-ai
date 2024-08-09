@@ -1,14 +1,16 @@
+import "package:animated_flip_counter/animated_flip_counter.dart";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:prescamai/controllers/user_details_controller.dart";
 
 class HomeLeaderboardsCard extends StatelessWidget {
-  const HomeLeaderboardsCard({
-    super.key,
-  });
+  const HomeLeaderboardsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // final AuthService authService = Get.find();
+    final UserDetailsController userDetailsController =
+        Get.put(UserDetailsController());
     return Card(
       color: Theme.of(context).primaryColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -35,14 +37,16 @@ class HomeLeaderboardsCard extends StatelessWidget {
                         color: Colors.white70),
                   ),
                   SizedBox(height: 3),
-                  Text(
-                    "89300",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  Obx(
+                    () => AnimatedFlipCounter(
+                      value: userDetailsController.points,
+                      wholeDigits: 3,
+                      duration: Duration(seconds: 3),
+                      textStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
                   ),
                 ],
               ),

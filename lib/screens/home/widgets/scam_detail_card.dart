@@ -1,14 +1,13 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:prescamai/models/scam_model.dart";
 
 class ScamDetailCard extends StatelessWidget {
-  const ScamDetailCard({
-    super.key,
-  });
+  final Scam scam;
+  const ScamDetailCard({super.key, required this.scam});
 
   @override
   Widget build(BuildContext context) {
-    // final AuthService authService = Get.find();
     return Card(
       color: Theme.of(context).primaryColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -36,7 +35,7 @@ class ScamDetailCard extends StatelessWidget {
                   ),
                   SizedBox(height: 2),
                   Text(
-                    "300",
+                    "${scam.quiz.length * 100}",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -62,7 +61,7 @@ class ScamDetailCard extends StatelessWidget {
                   ),
                   SizedBox(height: 2),
                   Text(
-                    "3",
+                    "${scam.quiz.length}",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

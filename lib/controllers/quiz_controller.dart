@@ -1,4 +1,5 @@
 import "package:get/get.dart";
+import "package:prescamai/controllers/user_details_controller.dart";
 import "package:prescamai/models/quiz_model.dart";
 import "package:prescamai/models/scam_model.dart";
 import "package:prescamai/screens/chat/pages/chat_complete.dart";
@@ -9,6 +10,7 @@ class QuizController extends GetxController {
   late Scam scam;
   RxInt currentQuizIndex = 0.obs;
   RxInt points = 0.obs;
+  final UserDetailsController userDetailsController = Get.find();
 
   void initialize(Scam scam) {
     this.scam = scam;
@@ -32,13 +34,14 @@ class QuizController extends GetxController {
       );
     } else {
       // All quizzes are done, handle completion
-      Get.to(
-          () => ChatComplete(
-              description:
-                  "You have completed and obtained the ${scam.title} Award!"),
-          transition: Transition.zoom);
+      Get.to(() {
+        return ChatComplete(
+            description:
+                "You have completed and obtained the ${scam.title} Award!");
+      }, transition: Transition.zoom);
       await Future.delayed(Duration(seconds: 1));
       points(scam.quiz.length * 100);
+      await userDetailsController.updatePoints(points.value);
     }
   }
 

@@ -30,6 +30,7 @@ class DatabaseService extends GetxController {
       final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       appUser.fullName.value = data["fullName"].toString();
       appUser.genderIsMale = data["genderIsMale"];
+      appUser.points.value = data["points"];
 
       // Syncing auth email to firestore
       if (appUser.isVerified) {
@@ -52,7 +53,7 @@ class DatabaseService extends GetxController {
   Future<ReturnValue> submitReportProblem(String string) async {
     try {
       await supportCollection.add({
-        "residentUID": appUser.uid,
+        "uid": appUser.uid,
         "name": appUser.fullName.value,
         "email": appUser.email,
         "problem": string,

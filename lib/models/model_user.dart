@@ -10,6 +10,7 @@ class AppUser extends GetxController {
   // Variables
   RxString fullName = "".obs;
   bool? genderIsMale;
+  RxInt points = 0.obs;
 
   AppUser(
       {this.provider,

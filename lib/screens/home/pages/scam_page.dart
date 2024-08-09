@@ -75,7 +75,7 @@ class ScamPage extends StatelessWidget {
                                 color: themeService.textColor),
                           ),
                           SizedBox(height: 30),
-                          ScamDetailCard(),
+                          ScamDetailCard(scam: scam),
                           SizedBox(height: 30),
                           Card(
                             color: Theme.of(context).cardColor,

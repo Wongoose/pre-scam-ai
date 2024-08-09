@@ -25,12 +25,14 @@ class UserDetailsController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool fullNameHasChanges = false.obs;
   RxBool emailHasChanges = false.obs;
+  bool isPageVisible = false;
 
   // Getters - App User
   AppUser get appUser => authService.appUser;
   String? get fullName => appUser.fullName.value;
   String? get email => appUser.email;
   bool? get genderIsMale => appUser.genderIsMale;
+  int get points => appUser.points.value;
 
   // Getters - Editing details
   String get editedFullName => (fullNameController.text.trim());
@@ -43,7 +45,7 @@ class UserDetailsController extends GetxController {
     emailHasChanges.value = editedEmail != email;
   }
 
-  void updateFullName() async {
+  Future<void> updateFullName() async {
     if (!fullNameHasChanges.value) return;
     // NEXT: Validation
     isLoading(true);
@@ -58,6 +60,24 @@ class UserDetailsController extends GetxController {
     }
     appUser.fullName.value = editedFullName;
     Get.back();
+  }
+
+  Future<void> updatePoints(int points) async {
+    appUser.points.value += points;
+    isLoading(true);
+    ReturnValue result = await _db.updateUser({"points": this.points});
+    isLoading(false);
+    if (!result.success) {
+      Get.showSnackbar(GetSnackBar(
+          message:
+              "Failed to update points! Please check your connection and try again.",
+          duration: Duration(seconds: 2)));
+      return;
+    }
+  }
+
+  void setPageVisibility(bool visibility) {
+    isPageVisible = visibility;
   }
 
   void updateEmail() async {
