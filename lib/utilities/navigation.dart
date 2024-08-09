@@ -1,30 +1,20 @@
 import "package:get/get.dart";
 import "package:prescamai/screens/auth/pages/auth_home.dart";
-// import "package:prescamai/screens/auth/pages/auth_home.dart";
 import "package:prescamai/screens/auth/pages/auth_wrapper.dart";
 import "package:prescamai/screens/home/home_wrapper.dart";
 import "package:prescamai/screens/profile/pages/edit_email.dart";
 import "package:prescamai/screens/profile/pages/edit_gender.dart";
 import "package:prescamai/screens/profile/pages/edit_username.dart";
+import "package:prescamai/screens/settings/pages/credits.dart";
 import "package:prescamai/screens/settings/pages/privacy_policy.dart";
 import "package:prescamai/screens/settings/pages/settings_main.dart";
 import "package:prescamai/screens/settings/pages/settings_page_faq.dart";
 import "package:prescamai/screens/settings/pages/settings_page_information.dart";
 import "package:prescamai/screens/settings/pages/terms_and_conditions.dart";
-// import "package:prescamai/screens/create_account/pages/create_acc_address.dart";
-// import "package:prescamai/screens/create_account/pages/create_acc_home.dart";
-// import "package:prescamai/screens/home/home_wrapper.dart";
-// import "package:prescamai/screens/home/splash_screen.dart";
-// import "package:prescamai/screens/profile/pages/edit_address.dart";
-// import "package:prescamai/screens/profile/pages/edit_email.dart";
-// import "package:prescamai/screens/profile/pages/edit_username.dart";
-// import "package:prescamai/screens/settings/pages/privacy_policy.dart";
-// import "package:prescamai/screens/settings/pages/settings_page_faq.dart";
-// import "package:prescamai/screens/settings/pages/settings_page_information.dart";
-// import "package:prescamai/screens/settings/pages/settings_main.dart";
-// import "package:prescamai/screens/settings/pages/terms_and_conditions.dart";
-// import "package:prescamai/screens/visitor_registration/pages/vreg_date.dart";
-// import "package:prescamai/screens/visitor_registration/pages/vreg_exit_date.dart";
+
+Future navigateToCredits() async {
+  return await Get.to(() => CreditsPage());
+}
 
 Future navigateToPrivacyPolicy() async {
   return await Get.to(() => PrivacyPolicyPage());
