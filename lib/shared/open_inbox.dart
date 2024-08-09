@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:open_mail_app/open_mail_app.dart";
 import "package:prescamai/shared/center_image_text.dart";
 import "package:prescamai/shared/my_page_appbar.dart";
 import "package:prescamai/utilities/navigation.dart";
@@ -54,30 +56,18 @@ class _OpenInboxScreenState extends State<OpenInboxScreen> {
                     ),
                   ),
                   onPressed: () async {
-                    // final OpenMailAppResult result = await OpenMailApp.openMailApp();
-                    // if (!result.didOpen && !result.canOpen) {
-                    //   // NEXT: Decide use toast or Get.snackbar
-                    //   toast("Oops! No mail apps installed.");
-                    // } else if (!result.didOpen && result.canOpen) {
-                    //   showDialog(
-                    //     context: context,
-                    //     builder: (_) {
-                    //       return MailAppPickerDialog(
-                    //         mailApps: result.options,
-                    //       );
-                    //     },
-                    //   );
-                    // }
+                    final OpenMailAppResult result =
+                        await OpenMailApp.openMailApp();
+                    if (!result.didOpen && !result.canOpen) {
+                      Get.snackbar(
+                          "No email app", "Oops! No mail apps installed.");
+                    } else if (!result.didOpen && result.canOpen) {
+                      Get.dialog(MailAppPickerDialog(mailApps: result.options));
+                    }
                   },
                   child: Text(
                     "Open email app",
                     style: TextStyle(
-                      // shadows: [
-                      //   Shadow(
-                      //       color: Colors.black26,
-                      //       blurRadius: 10,
-                      //       offset: Offset(0.5, 0.5))
-                      // ],
                       fontFamily: "Nunito",
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
@@ -96,7 +86,8 @@ class _OpenInboxScreenState extends State<OpenInboxScreen> {
                     style: TextStyle(
                         fontFamily: "Nunito",
                         decoration: TextDecoration.underline,
-                        decorationColor: Theme.of(context).colorScheme.secondary,
+                        decorationColor:
+                            Theme.of(context).colorScheme.secondary,
                         color: Theme.of(context).colorScheme.secondary,
                         fontWeight: FontWeight.w400,
                         fontSize: 14),

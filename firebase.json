@@ -1,0 +1,30 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "gemini-ai-dev-93332",
+                    "appId": "1:919564054860:android:4d7d035f438576ea285fe9",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "gemini-ai-dev-93332",
+                    "appId": "1:919564054860:ios:3041c3bd87e66765285fe9",
+                    "uploadDebugSymbols": false,
+                    "fileOutput": "ios/Runner/GoogleService-Info.plist"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "gemini-ai-dev-93332",
+                    "configurations": {
+                        "android": "1:919564054860:android:4d7d035f438576ea285fe9",
+                        "ios": "1:919564054860:ios:3041c3bd87e66765285fe9"
+                    }
+                }
+            }
+        }
+    }
+}

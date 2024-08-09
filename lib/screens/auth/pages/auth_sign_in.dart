@@ -3,6 +3,7 @@ import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
 import "package:prescamai/controllers/sign_in_controller.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
+import "package:prescamai/screens/auth/pages/auth_reset_password.dart";
 // import "package:prescamai/screens/auth/pages/auth_reset_password.dart";
 import "package:prescamai/screens/auth/widgets/auth_sign_in_option_divider.dart";
 import "package:prescamai/screens/auth/widgets/auth_richtext.dart";
@@ -24,16 +25,21 @@ class AuthSignIn extends StatefulWidget {
 }
 
 class _AuthSignInState extends State<AuthSignIn> {
-  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+  final MyThemeServiceController themeService =
+      Get.put(MyThemeServiceController());
   final SignInController signInController = Get.put(SignInController());
 
   @override
   void initState() {
     super.initState();
-    signInController.emailController
-        .addListener(() => signInController.firstValidation ? null : signInController.validateEmailAndPassword());
-    signInController.passwordController
-        .addListener(() => signInController.firstValidation ? null : signInController.validateEmailAndPassword());
+    signInController.emailController.addListener(() =>
+        signInController.firstValidation
+            ? null
+            : signInController.validateEmailAndPassword());
+    signInController.passwordController.addListener(() =>
+        signInController.firstValidation
+            ? null
+            : signInController.validateEmailAndPassword());
     signInController.emailController.text = widget.preEmail ?? "";
   }
 
@@ -56,7 +62,9 @@ class _AuthSignInState extends State<AuthSignIn> {
                         MyPageAppBar(
                           title: "Login",
                           appBarType: MyAppBarType.back,
-                          backFunction: widget.preEmail != null ? navigateOffAllAuthHome : null,
+                          backFunction: widget.preEmail != null
+                              ? navigateOffAllAuthHome
+                              : null,
                         ),
                         SizedBox(height: 30),
                         Expanded(flex: 1, child: Container()),
@@ -77,22 +85,28 @@ class _AuthSignInState extends State<AuthSignIn> {
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           signInController.errMessage.string,
-                                          style: TextStyle(color: Colors.red[600]),
+                                          style:
+                                              TextStyle(color: Colors.red[600]),
                                         ),
                                       ),
                                     ])
                                   : Container(),
                             ),
                             SizedBox(height: 20),
-                            AuthTextFieldEmail(emailController: signInController.emailController),
+                            AuthTextFieldEmail(
+                                emailController:
+                                    signInController.emailController),
                             SizedBox(height: 20),
-                            AuthTextFieldPassword(passwordController: signInController.passwordController),
+                            AuthTextFieldPassword(
+                                passwordController:
+                                    signInController.passwordController),
                             Align(
                               alignment: Alignment.centerRight,
                               child: Padding(
                                 padding: EdgeInsets.fromLTRB(0, 7, 5, 0),
                                 child: GestureDetector(
-                                  // onTap: () => Get.to(() => ResetPassword(email: signInController.email)),
+                                  onTap: () => Get.to(() => ResetPassword(
+                                      email: signInController.email)),
                                   child: SizedBox(
                                     child: Text(
                                       "Forgot password?",
@@ -116,7 +130,8 @@ class _AuthSignInState extends State<AuthSignIn> {
                                   return MyFillButton(
                                     text: "Login with email",
                                     color: Theme.of(context).primaryColor,
-                                    onPressFunc: () => signInController.signInEmail(),
+                                    onPressFunc: () =>
+                                        signInController.signInEmail(),
                                   );
                                 }
                               },
@@ -134,11 +149,12 @@ class _AuthSignInState extends State<AuthSignIn> {
                                 color: Colors.red[400],
                                 size: 20,
                               ),
-                              // onPressFunc: () => signInController.signInGoogle(),
-                              onPressFunc: () {
-                                Get.back();
-                                signInController.tempToggleAuthScreen(false);
-                              },
+                              onPressFunc: () =>
+                                  signInController.signInGoogle(),
+                              // onPressFunc: () {
+                              //   Get.back();
+                              //   signInController.tempToggleAuthScreen(false);
+                              // },
                             ),
                           ]),
                         ),

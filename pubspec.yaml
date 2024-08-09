@@ -23,6 +23,12 @@ dependencies:
   google_generative_ai: ^0.4.4
   flutter_animate: ^4.5.0
   animated_flip_counter: ^0.3.4
+  firebase_core: ^3.3.0
+  firebase_auth: ^5.1.4
+  cloud_firestore: ^5.2.1
+  google_sign_in: ^6.2.1
+  open_mail_app: ^0.4.5
+  webview_flutter: ^4.8.0
 
 dev_dependencies:
   flutter_test:

@@ -1,48 +1,67 @@
-// import "dart:convert";
-// import "package:flutter/cupertino.dart";
-// import "package:flutter/material.dart";
-// import "package:flutter/services.dart";
-// import "package:get/get.dart";
-// import "package:webview_flutter/webview_flutter.dart";
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:webview_flutter/webview_flutter.dart";
 
-// class TermsAndConditionsPage extends StatelessWidget {
-//   const TermsAndConditionsPage({Key? key}) : super(key: key);
+class TermsAndConditionsPage extends StatefulWidget {
+  const TermsAndConditionsPage({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     late WebViewController _controller;
+  @override
+  State<TermsAndConditionsPage> createState() => _TermsAndConditionsPageState();
+}
 
-//     void _loadHtmlFromAssets() async {
-//       String fileText = await rootBundle.loadString("assets/html/terms.html");
-//       _controller.loadUrl(
-//           Uri.dataFromString(fileText, mimeType: "text/html", encoding: Encoding.getByName("utf-8")).toString());
-//     }
+class _TermsAndConditionsPageState extends State<TermsAndConditionsPage> {
+  late WebViewController controller;
 
-//     return SafeArea(
-//       child: Scaffold(
-//         body: WebView(
-//           initialUrl: "about:blank",
-//           javascriptMode: JavascriptMode.disabled,
-//           onWebViewCreated: (WebViewController webViewController) {
-//             _controller = webViewController;
-//             _loadHtmlFromAssets();
-//           },
-//         ),
-//         floatingActionButton: SizedBox(
-//           height: 50,
-//           width: 50,
-//           child: FloatingActionButton(
-//             onPressed: () => Get.back(),
-//             child: Icon(
-//               CupertinoIcons.back,
-//               color: Colors.white,
-//               size: 25,
-//             ),
-//             backgroundColor: Theme.of(context).primaryColor,
-//           ),
-//         ),
-//         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-//       ),
-//     );
-//   }
-// }
+  @override
+  void initState() {
+    super.initState();
+
+    late PlatformWebViewControllerCreationParams params =
+        PlatformWebViewControllerCreationParams();
+
+    final WebViewController controller =
+        WebViewController.fromPlatformCreationParams(params);
+
+    controller
+      ..setJavaScriptMode(JavaScriptMode.disabled)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {},
+          onPageStarted: (String url) {},
+          onPageFinished: (String url) {},
+          onHttpError: (HttpResponseError error) {},
+          onWebResourceError: (WebResourceError error) {},
+          onNavigationRequest: (NavigationRequest request) {
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(
+          Uri.parse("https://prescamai.mystrikingly.com/terms-and-conditions"));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: WebViewWidget(controller: controller),
+        floatingActionButton: SizedBox(
+          height: 50,
+          width: 50,
+          child: FloatingActionButton(
+            onPressed: () => Get.back(),
+            backgroundColor: Theme.of(context).primaryColor,
+            child: Icon(
+              CupertinoIcons.back,
+              color: Colors.white,
+              size: 25,
+            ),
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      ),
+    );
+  }
+}

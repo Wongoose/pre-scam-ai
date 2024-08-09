@@ -1,15 +1,15 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-// import "package:prescamai/services/firebase/firestore.dart";
-// import "package:prescamai/services/firebase/auth.dart";
+import "package:prescamai/services/auth.dart";
+import "package:prescamai/services/firestore.dart";
+import "package:prescamai/shared/shared_classes.dart";
 
 class SignInController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  // NOTE: Haven't implemented backend
-  // final AuthService authService = Get.find();
-  // final DatabaseService _db = Get.find();
+  final AuthService authService = Get.find();
+  final DatabaseService _db = Get.find();
 
   RxBool tempToggleAuthScreen = true.obs;
 
@@ -65,12 +65,14 @@ class SignInController extends GetxController {
       isLoading(false);
       return;
     }
-    // NOTE: Haven't implemented backend
 
-    // ReturnValue result = await authService.signInWithEmailPassword(email: email, password: password);
-    // !result.success
-    //     ? errMessage("${result.value}")
-    // : Get.showSnackbar(GetSnackBar(message: "Logged in with ${result.value}!", duration: Duration(seconds: 2)));
+    ReturnValue result = await authService.signInWithEmailPassword(
+        email: email, password: password);
+    !result.success
+        ? errMessage("${result.value}")
+        : Get.showSnackbar(GetSnackBar(
+            message: "Logged in with ${result.value}!",
+            duration: Duration(seconds: 2)));
     isLoading(false);
   }
 
@@ -86,15 +88,15 @@ class SignInController extends GetxController {
       return;
     }
 
-    // NOTE: Haven't implemented backend
-
-    // ReturnValue result = await authService.createEmailAccount(email: email, password: password);
-    // if (result.success) {
-    // _db.createNewUser(result.value!, email);
-    // Get.showSnackbar(GetSnackBar(message: "Signed up with $email!", duration: Duration(seconds: 2)));
-    // } else {
-    // errMessage("${result.value}");
-    // }
+    ReturnValue result =
+        await authService.createEmailAccount(email: email, password: password);
+    if (result.success) {
+      _db.createNewUser(result.value!, email);
+      Get.showSnackbar(GetSnackBar(
+          message: "Signed up with $email!", duration: Duration(seconds: 2)));
+    } else {
+      errMessage("${result.value}");
+    }
     isLoading(false);
   }
 
@@ -102,16 +104,14 @@ class SignInController extends GetxController {
     isLoading(true);
     FocusManager.instance.primaryFocus?.unfocus();
 
-    // NOTE: Haven't implemented backend
-
-    // ReturnValue result = await authService.signInWithGoogle();
-    // if (result.success) {
-    //   Get.showSnackbar(GetSnackBar(
-    //       message: "Logged in with ${result.value}!",
-    //       duration: Duration(seconds: 2)));
-    // } else {
-    //   errMessage("${result.value}");
-    // }
+    ReturnValue result = await authService.signInWithGoogle();
+    if (result.success) {
+      Get.showSnackbar(GetSnackBar(
+          message: "Logged in with ${result.value}!",
+          duration: Duration(seconds: 2)));
+    } else {
+      errMessage("${result.value}");
+    }
     isLoading(false);
   }
 }

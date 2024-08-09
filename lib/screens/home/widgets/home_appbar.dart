@@ -2,6 +2,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
+import "package:prescamai/services/auth.dart";
 // import "package:prescamai/screens/profile/pages/profile_main.dart";
 
 class HomeAppBar extends StatelessWidget {
@@ -14,6 +15,7 @@ class HomeAppBar extends StatelessWidget {
     // final UserDetailsController userDetailsController = Get.put(UserDetailsController());
     final MyThemeServiceController themeService =
         Get.put(MyThemeServiceController());
+    final AuthService authService = Get.find();
 
     return Row(
         mainAxisSize: MainAxisSize.max,
@@ -28,7 +30,7 @@ class HomeAppBar extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
                     child: Text(
-                      "Welcome, John Doe",
+                      "Welcome, ${authService.appUser.fullName}",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -37,18 +39,18 @@ class HomeAppBar extends StatelessWidget {
                         color: themeService.textColor54,
                       ),
                     ),
-                    // child: Obx(
-                    //   () => Text(
-                    //     "Welcome, ${userDetailsController.fullName}",
-                    //     maxLines: 1,
-                    //     overflow: TextOverflow.ellipsis,
-                    //     style: TextStyle(
-                    //       fontSize: 16,
-                    //       fontWeight: FontWeight.w500,
-                    //       color: themeService.textColor54,
+                    //   child: Obx(
+                    //     () => Text(
+                    //       "Welcome, ${userDetailsController.fullName}",
+                    //       maxLines: 1,
+                    //       overflow: TextOverflow.ellipsis,
+                    //       style: TextStyle(
+                    //         fontSize: 16,
+                    //         fontWeight: FontWeight.w500,
+                    //         color: themeService.textColor54,
+                    //       ),
                     //     ),
                     //   ),
-                    // ),
                   ),
                   SizedBox(height: 2.5),
                   Text(

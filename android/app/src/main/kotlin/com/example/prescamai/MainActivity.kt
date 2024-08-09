@@ -1,4 +1,4 @@
-package com.example.prescamai
+package com.crown.prescamai
 
 import io.flutter.embedding.android.FlutterActivity
 

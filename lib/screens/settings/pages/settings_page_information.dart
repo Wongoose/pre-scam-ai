@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:prescamai/screens/settings/widgets/settings_item.dart";
 import "package:prescamai/shared/my_page_appbar.dart";
+import "package:prescamai/utilities/navigation.dart";
 
 class SettingsInformationPage extends StatelessWidget {
   const SettingsInformationPage({super.key});
@@ -20,13 +21,13 @@ class SettingsInformationPage extends StatelessWidget {
             MySettingsItem(
               itemIcon: Icons.book,
               text: "Terms & Conditions",
-              // onPressed: () => navigateToTermsAndConditions(),
+              onPressed: () => navigateToTermsAndConditions(),
             ),
             SizedBox(height: 15),
             MySettingsItem(
               itemIcon: Icons.privacy_tip_rounded,
               text: "Privacy Policy",
-              // onPressed: () => navigateToPrivacyPolicy(),
+              onPressed: () => navigateToPrivacyPolicy(),
             ),
             SizedBox(height: 15),
             MySettingsItem(
