@@ -2,6 +2,7 @@ import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:prescamai/models/model_user.dart";
+import "package:prescamai/models/scam_model.dart";
 import "package:prescamai/screens/auth/pages/auth_sign_in.dart";
 import "package:prescamai/services/auth.dart";
 import "package:prescamai/services/firestore.dart";
@@ -25,7 +26,6 @@ class UserDetailsController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool fullNameHasChanges = false.obs;
   RxBool emailHasChanges = false.obs;
-  bool isPageVisible = false;
 
   // Getters - App User
   AppUser get appUser => authService.appUser;
@@ -33,6 +33,8 @@ class UserDetailsController extends GetxController {
   String? get email => appUser.email;
   bool? get genderIsMale => appUser.genderIsMale;
   int get points => appUser.points.value;
+  int get ranking => appUser.ranking.value;
+  List<int> get completedScamIDs => appUser.completedScamIDs;
 
   // Getters - Editing details
   String get editedFullName => (fullNameController.text.trim());
@@ -66,6 +68,7 @@ class UserDetailsController extends GetxController {
     appUser.points.value += points;
     isLoading(true);
     ReturnValue result = await _db.updateUser({"points": this.points});
+    _db.getRanking();
     isLoading(false);
     if (!result.success) {
       Get.showSnackbar(GetSnackBar(
@@ -76,8 +79,19 @@ class UserDetailsController extends GetxController {
     }
   }
 
-  void setPageVisibility(bool visibility) {
-    isPageVisible = visibility;
+  Future<void> updateScamComplete(Scam scam) async {
+    completedScamIDs.add(scam.id);
+    isLoading(true);
+    ReturnValue result =
+        await _db.updateUser({"completedScamIDs": completedScamIDs});
+    isLoading(false);
+    if (!result.success) {
+      Get.showSnackbar(GetSnackBar(
+          message:
+              "Failed to update completion! Please check your connection and try again.",
+          duration: Duration(seconds: 2)));
+      return;
+    }
   }
 
   void updateEmail() async {

@@ -40,7 +40,6 @@ class HomeLeaderboardsCard extends StatelessWidget {
                   Obx(
                     () => AnimatedFlipCounter(
                       value: userDetailsController.points,
-                      wholeDigits: 3,
                       duration: Duration(seconds: 3),
                       textStyle: TextStyle(
                           fontSize: 16,
@@ -65,14 +64,16 @@ class HomeLeaderboardsCard extends StatelessWidget {
                         color: Colors.white70),
                   ),
                   SizedBox(height: 3),
-                  Text(
-                    "#1,438",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  Obx(
+                    () => AnimatedFlipCounter(
+                      value: userDetailsController.ranking,
+                      prefix: "#",
+                      duration: Duration(seconds: 3),
+                      textStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
                   ),
                 ],
               ),
@@ -91,14 +92,16 @@ class HomeLeaderboardsCard extends StatelessWidget {
                         color: Colors.white70),
                   ),
                   SizedBox(height: 3),
-                  Text(
-                    "#56",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  Obx(
+                    () => AnimatedFlipCounter(
+                      value: userDetailsController.completedScamIDs.length,
+                      suffix: "/10",
+                      duration: Duration(seconds: 3),
+                      textStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
                   ),
                 ],
               ),

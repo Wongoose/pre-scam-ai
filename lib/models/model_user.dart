@@ -11,6 +11,8 @@ class AppUser extends GetxController {
   RxString fullName = "".obs;
   bool? genderIsMale;
   RxInt points = 0.obs;
+  RxInt ranking = 0.obs;
+  RxList<int> completedScamIDs = RxList<int>();
 
   AppUser(
       {this.provider,

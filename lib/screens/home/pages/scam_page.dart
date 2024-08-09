@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:prescamai/controllers/user_details_controller.dart";
 import "package:prescamai/screens/chat/pages/chat_main.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
 import "package:prescamai/models/scam_model.dart";
@@ -15,6 +16,8 @@ class ScamPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService =
         Get.put(MyThemeServiceController());
+
+    final UserDetailsController userDetailsController = Get.find();
 
     return SafeArea(
       child: Scaffold(
@@ -38,17 +41,27 @@ class ScamPage extends StatelessWidget {
                           SizedBox(height: 10),
                           Chip(
                             label: Text(
-                              "NOT COMPLETED",
+                              userDetailsController.completedScamIDs
+                                      .contains(scam.id)
+                                  ? "COMPLETED"
+                                  : "NOT COMPLETED",
                               style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
                                   overflow: TextOverflow.ellipsis,
-                                  color: Colors.red[400]),
+                                  color: userDetailsController.completedScamIDs
+                                          .contains(scam.id)
+                                      ? Theme.of(context).colorScheme.secondary
+                                      : Colors.red[400]),
                             ),
                             backgroundColor:
                                 Theme.of(context).scaffoldBackgroundColor,
                             labelPadding: EdgeInsets.fromLTRB(2, 0, 2, 0),
-                            side: BorderSide(color: Colors.red[400]!),
+                            side: BorderSide(
+                                color: userDetailsController.completedScamIDs
+                                        .contains(scam.id)
+                                    ? Theme.of(context).colorScheme.secondary
+                                    : Colors.red[400]!),
                           ),
                           SizedBox(height: 10),
                           Center(

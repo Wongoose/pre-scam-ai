@@ -42,6 +42,7 @@ class QuizController extends GetxController {
       await Future.delayed(Duration(seconds: 1));
       points(scam.quiz.length * 100);
       await userDetailsController.updatePoints(points.value);
+      await userDetailsController.updateScamComplete(scam);
     }
   }
 

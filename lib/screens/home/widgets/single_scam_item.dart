@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
+import "package:prescamai/controllers/user_details_controller.dart";
 import "package:prescamai/models/scam_model.dart";
 import "package:prescamai/screens/home/pages/scam_page.dart";
 
@@ -13,6 +14,8 @@ class SingleScamItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService =
         Get.put(MyThemeServiceController());
+
+    final UserDetailsController userDetailsController = Get.find();
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
@@ -63,17 +66,25 @@ class SingleScamItem extends StatelessWidget {
                   SizedBox(height: 4),
                   Chip(
                     label: Text(
-                      "Start now",
+                      userDetailsController.completedScamIDs.contains(scam.id)
+                          ? "Completed"
+                          : "Start now",
                       style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
                           overflow: TextOverflow.ellipsis,
-                          color: Theme.of(context).colorScheme.secondary),
+                          color: userDetailsController.completedScamIDs
+                                  .contains(scam.id)
+                              ? Theme.of(context).colorScheme.secondary
+                              : Colors.red[400]),
                     ),
                     backgroundColor: Theme.of(context).cardColor,
                     labelPadding: EdgeInsets.fromLTRB(2, 0, 2, 0),
                     side: BorderSide(
-                        color: Theme.of(context).colorScheme.secondary),
+                        color: userDetailsController.completedScamIDs
+                                .contains(scam.id)
+                            ? Theme.of(context).colorScheme.secondary
+                            : Colors.red[400]!),
                   ),
                 ],
               ),

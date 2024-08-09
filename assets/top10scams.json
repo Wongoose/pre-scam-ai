@@ -1,7 +1,7 @@
 {
   "scams": [
     {
-      "id": "1",
+      "id": 1,
       "title": "Phishing Scams",
       "img": "assets/icons/phishing.png",
       "description": "Cybercriminals send deceptive emails or messages that appear to be from legitimate sources, tricking individuals into revealing sensitive information like passwords or credit card numbers.",
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "id": "2",
+      "id": 2,
       "title": "Tech Support Scams",
       "img": "assets/icons/technical-support.png",
       "description": "Scammers impersonate tech support representatives from reputable companies, claiming there's a problem with the victim's computer and demanding payment for fixing it.",
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "id": "3",
+      "id": 3,
       "title": "Online Shopping Scams",
       "img": "assets/icons/online-shopping.png",
       "description": "Fake online stores offer products at incredibly low prices, often taking payment without delivering any goods or providing counterfeit products.",
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "id": "4",
+      "id": 4,
       "title": "Romance Scams",
       "img": "assets/icons/love.png",
       "description": "Fraudsters create fake online personas to establish romantic relationships with victims, eventually asking for money or personal information under false pretenses.",
@@ -131,7 +131,7 @@
       ]
     },
     {
-      "id": "5",
+      "id": 5,
       "title": "Investment Scams",
       "img": "assets/icons/investment.png",
       "description": "Individuals are lured into investing in fake or non-existent cryptocurrencies or initial coin offerings (ICOs), resulting in financial losses.",
@@ -172,7 +172,7 @@
       ]
     },
     {
-      "id": "6",
+      "id": 6,
       "title": "IRS / Tax Scams",
       "img": "assets/icons/tax.png",
       "description": "Scammers impersonate tax authorities and threaten victims with legal action or arrest if they don't pay alleged back taxes immediately.",
@@ -213,7 +213,7 @@
       ]
     },
     {
-      "id": "7",
+      "id": 7,
       "title": "Lottery or Prize Scams",
       "img": "assets/icons/online-lottery.png",
       "description": "Victims receive notifications claiming they've won a lottery or prize and are asked to pay fees or provide personal information to claim their winnings.",
@@ -244,7 +244,7 @@
       ]
     },
     {
-      "id": "8",
+      "id": 8,
       "title": "Charity Scams",
       "img": "assets/icons/charity.png",
       "description": "Scammers pose as charitable organizations, soliciting donations for fake causes or disaster relief efforts.",
@@ -275,7 +275,7 @@
       ]
     },
     {
-      "id": "9",
+      "id": 9,
       "title": "Ransomware Scams",
       "img": "assets/icons/virus.png",
       "description": "Malicious software encrypts a victim's data, and attackers demand a ransom in exchange for the decryption key, with no guarantee they will provide it even if paid.",
@@ -306,7 +306,7 @@
       ]
     },
     {
-      "id": "10",
+      "id": 10,
       "title": "Job / WFH Scams",
       "img": "assets/icons/job-search.png",
       "description": "Scammers offer fake job opportunities, asking for upfront payments for training or equipment.",

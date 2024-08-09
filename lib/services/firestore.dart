@@ -29,8 +29,10 @@ class DatabaseService extends GetxController {
       }
       final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       appUser.fullName.value = data["fullName"].toString();
-      appUser.genderIsMale = data["genderIsMale"];
       appUser.points.value = data["points"];
+      appUser.completedScamIDs.value = List<int>.from(data["completedScamIDs"]);
+      appUser.genderIsMale = data["genderIsMale"];
+      getRanking();
 
       // Syncing auth email to firestore
       if (appUser.isVerified) {
@@ -38,6 +40,22 @@ class DatabaseService extends GetxController {
       }
     } catch (err) {
       return;
+    }
+  }
+
+  Future<void> getRanking() async {
+    QuerySnapshot snapshot =
+        await usersCollection.orderBy("points", descending: true).get();
+
+    // Initialize position variable
+    int position = 1;
+
+    // Iterate through the users to find the current user's position
+    for (DocumentSnapshot doc in snapshot.docs) {
+      if (doc.id == appUser.uid) {
+        appUser.ranking(position);
+      }
+      position++;
     }
   }
 

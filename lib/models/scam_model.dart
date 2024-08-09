@@ -1,7 +1,7 @@
 import "package:prescamai/models/quiz_model.dart";
 
 class Scam {
-  final String id;
+  final int id;
   final String title;
   final String img;
   final String description;
@@ -28,7 +28,7 @@ class Scam {
 
   factory Scam.fromJson(Map<String, dynamic> json) {
     return Scam(
-      id: json["id"] as String,
+      id: json["id"] as int,
       title: json["title"] as String,
       img: json["img"] as String,
       description: json["description"] as String,
