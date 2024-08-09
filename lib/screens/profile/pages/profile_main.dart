@@ -126,6 +126,12 @@ class UserProfile extends StatelessWidget {
                       onPressed: navigateToEditEmail,
                     ),
                     SizedBox(height: 15),
+                    MyProfileItem(
+                      itemIcon: Icons.supervised_user_circle,
+                      text: "Gender",
+                      onPressed: navigateToEditGender,
+                    ),
+                    SizedBox(height: 15),
                     Expanded(child: Container()),
                     Text(
                       "Looking for something else?",

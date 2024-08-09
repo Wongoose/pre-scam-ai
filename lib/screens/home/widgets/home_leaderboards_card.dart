@@ -105,30 +105,6 @@ class HomeLeaderboardsCard extends StatelessWidget {
                   ),
                 ],
               ),
-              // Flexible(
-              //   child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.start,
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         Text(
-              //           "Top 10",
-              //           style: TextStyle(
-              //               fontSize: 18,
-              //               fontWeight: FontWeight.bold,
-              //               color: Colors.white),
-              //         ),
-              //         SizedBox(height: 5),
-              //         Text(
-              //           "89030 points",
-              //           maxLines: 2,
-              //           overflow: TextOverflow.ellipsis,
-              //           style: TextStyle(
-              //               fontSize: 14,
-              //               fontWeight: FontWeight.w400,
-              //               color: Colors.white),
-              //         ),
-              //       ]),
-              // ),
             ]),
       ),
     );

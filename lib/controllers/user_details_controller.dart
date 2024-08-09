@@ -13,6 +13,7 @@ import "package:prescamai/shared/shared_classes.dart";
 class UserDetailsController extends GetxController {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final RxBool genderIsMaleController = false.obs;
 
   final GlobalKey<FormState> fullNameKey = GlobalKey<FormState>();
   final DatabaseService _db = Get.find();
@@ -26,6 +27,7 @@ class UserDetailsController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool fullNameHasChanges = false.obs;
   RxBool emailHasChanges = false.obs;
+  RxBool genderHasChanges = false.obs;
 
   // Getters - App User
   AppUser get appUser => authService.appUser;
@@ -45,6 +47,7 @@ class UserDetailsController extends GetxController {
   void updateEditChanges() {
     fullNameHasChanges.value = editedFullName != fullName;
     emailHasChanges.value = editedEmail != email;
+    genderHasChanges.value = genderIsMaleController.value != genderIsMale;
   }
 
   Future<void> updateFullName() async {
@@ -61,6 +64,24 @@ class UserDetailsController extends GetxController {
       return;
     }
     appUser.fullName.value = editedFullName;
+    Get.back();
+  }
+
+  Future<void> updateGender() async {
+    if (!genderHasChanges.value) return;
+    // NEXT: Validation
+    isLoading(true);
+    ReturnValue result =
+        await _db.updateUser({"genderIsMale": genderIsMaleController.value});
+    isLoading(false);
+    if (!result.success) {
+      Get.showSnackbar(GetSnackBar(
+          message:
+              "Failed to update gender! Please check your connection and try again.",
+          duration: Duration(seconds: 2)));
+      return;
+    }
+    appUser.genderIsMale = genderIsMaleController.value;
     Get.back();
   }
 
@@ -120,5 +141,24 @@ class UserDetailsController extends GetxController {
               actionFunction: () =>
                   Get.offAll(() => AuthSignIn(preEmail: editedEmail))))),
     );
+  }
+
+  void submitCreateAccDetails() async {
+    isLoading(true);
+    ReturnValue result = await _db.updateUser({
+      "fullName": editedFullName,
+      "genderIsMale": genderIsMaleController.value,
+      "points": 0,
+      "completedScamIDs": [],
+    });
+    isLoading(false);
+    authService.reload();
+
+    if (!result.success) {
+      Get.showSnackbar(GetSnackBar(
+          message:
+              "Failed to create account! Please check your connection and try again.",
+          duration: Duration(seconds: 2)));
+    }
   }
 }

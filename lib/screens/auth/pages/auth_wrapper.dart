@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:prescamai/screens/auth/pages/auth_home.dart";
 import "package:prescamai/screens/auth/pages/auth_sign_in.dart";
+import "package:prescamai/screens/create_account/pages/create_acc_home.dart";
 import "package:prescamai/screens/home/home_wrapper.dart";
 import "package:prescamai/services/auth.dart";
 import "package:prescamai/shared/my_confirm_dialog.dart";
@@ -21,6 +22,8 @@ class _AuthWrapperState extends State<AuthWrapper> {
 
     if (authService.appUser.uid == null) {
       return AuthHome();
+    } else if (!authService.appUser.hasProfileDetails) {
+      return CreateAccHome(accountEmail: authService.appUser.email!);
     } else if (!authService.appUser.isVerified) {
       return OpenInboxScreen(
         initFunction: authService.sendVerificationEmail,

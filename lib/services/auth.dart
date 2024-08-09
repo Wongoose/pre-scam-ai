@@ -76,7 +76,7 @@ class AuthService extends GetxController {
   Future<ReturnValue> signInWithGoogle() async {
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn();
-      await googleSignIn.signOut();
+      // await googleSignIn.signOut();
 
       final GoogleSignInAccount? account = await googleSignIn.signIn();
       if (account == null) return (ReturnValue(false, "No account selected"));

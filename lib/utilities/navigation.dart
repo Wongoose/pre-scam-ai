@@ -4,6 +4,7 @@ import "package:prescamai/screens/auth/pages/auth_home.dart";
 import "package:prescamai/screens/auth/pages/auth_wrapper.dart";
 import "package:prescamai/screens/home/home_wrapper.dart";
 import "package:prescamai/screens/profile/pages/edit_email.dart";
+import "package:prescamai/screens/profile/pages/edit_gender.dart";
 import "package:prescamai/screens/profile/pages/edit_username.dart";
 import "package:prescamai/screens/settings/pages/privacy_policy.dart";
 import "package:prescamai/screens/settings/pages/settings_main.dart";
@@ -64,6 +65,10 @@ Future navigateToEditUsername() async {
 
 Future navigateToEditEmail() async {
   return await Get.to(() => EditEmailPage());
+}
+
+Future navigateToEditGender() async {
+  return await Get.to(() => EditGenderPage());
 }
 
 // Future navigateToEditAddress() async {

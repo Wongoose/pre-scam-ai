@@ -22,5 +22,5 @@ class AppUser extends GetxController {
       this.genderIsMale});
 
   // Getters
-  bool get hasProfileDetails => fullName.isNotEmpty && genderIsMale != null;
+  bool get hasProfileDetails => fullName.value.isNotEmpty && genderIsMale != null;
 }
