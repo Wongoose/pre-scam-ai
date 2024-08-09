@@ -51,7 +51,7 @@ class PreScamAIApp extends StatelessWidget {
           );
         },
         home: FutureBuilder(
-          future: delaySeconds(0),
+          future: delaySeconds(2),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
             } else if (snapshot.connectionState == ConnectionState.done) {
