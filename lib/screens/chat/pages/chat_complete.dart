@@ -4,7 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_animate/flutter_animate.dart";
 import "package:get/get.dart";
 import "package:prescamai/controllers/quiz_controller.dart";
-import "package:prescamai/shared/center_image_text.dart";
+import "package:prescamai/screens/chat/widgets/center_trophy.dart";
 import "package:prescamai/utilities/navigation.dart";
 
 class ChatComplete extends StatefulWidget {
@@ -42,8 +42,7 @@ class _ChatCompleteState extends State<ChatComplete> {
             child: Column(
               children: [
                 Expanded(flex: 2, child: Container()),
-                CenterImageText(
-                  imagePath: "assets/images/trophy.png",
+                CenterTrophy(
                   title: "Congratulations!",
                   description: widget.description,
                 ),

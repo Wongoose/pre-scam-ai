@@ -21,47 +21,12 @@ class CenterImageText extends StatelessWidget {
 
     return Column(
       children: [
-        Stack(
-          alignment: AlignmentDirectional.center,
-          children: [
-            Container(
-                alignment: Alignment.center,
-                child: Image(
-                  height: 340,
-                  image: AssetImage("assets/images/trophy-background.png"),
-                )
-                    .animate()
-                    .shimmer(duration: Duration(seconds: 2))
-                    .rotate(duration: Duration(seconds: 5))
-                    .then()
-                    .shimmer(duration: Duration(seconds: 2))
-                    .rotate(duration: Duration(seconds: 5))
-                    .then()
-                    .shimmer(duration: Duration(seconds: 2))
-                    .rotate(duration: Duration(seconds: 5))
-                    .then()
-                    .shimmer(duration: Duration(seconds: 2))
-                    .rotate(duration: Duration(seconds: 5))),
-            Container(
-              alignment: Alignment.center,
-              child: Image(
-                height: 200,
-                image: AssetImage(imagePath),
-              )
-                  .animate()
-                  .shake(duration: Duration(milliseconds: 500))
-                  .shimmer(duration: Duration(seconds: 1))
-                  .then()
-                  .shimmer(duration: Duration(seconds: 1))
-                  .then()
-                  .shimmer(duration: Duration(seconds: 1))
-                  .then()
-                  .shimmer(duration: Duration(seconds: 1))
-                  .then()
-                  .shimmer(duration: Duration(seconds: 1))
-            ),
-          ],
-        ),
+        Container(
+            alignment: Alignment.center,
+            child: Image(
+              height: 200,
+              image: AssetImage(imagePath),
+            ).animate().shake(duration: Duration(milliseconds: 500))),
         SizedBox(height: 20),
         Text(
           title,
