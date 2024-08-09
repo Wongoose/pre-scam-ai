@@ -44,20 +44,12 @@ class _HomeScamListState extends State<HomeScamList> {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Top 10 scams",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: themeService.textColor87)),
-              GestureDetector(
-                  // onTap: () => Get.to(() => AllVisitorsMain()),
-                  onTap: () {},
-                  child: Icon(Icons.more_horiz,
-                      size: 30, color: themeService.textColor70)),
-            ],
+          child: Text(
+            "Top 10 scams",
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: themeService.textColor87),
           ),
         ),
         SizedBox(height: 10),

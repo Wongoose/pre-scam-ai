@@ -1,9 +1,8 @@
-// import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:prescamai/controllers/theme_service_controller.dart";
-import "package:prescamai/services/auth.dart";
-// import "package:prescamai/screens/profile/pages/profile_main.dart";
+import "package:prescamai/controllers/user_details_controller.dart";
+import "package:prescamai/screens/profile/pages/profile_main.dart";
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
@@ -12,10 +11,10 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final UserDetailsController userDetailsController = Get.put(UserDetailsController());
+    final UserDetailsController userDetailsController =
+        Get.put(UserDetailsController());
     final MyThemeServiceController themeService =
         Get.put(MyThemeServiceController());
-    final AuthService authService = Get.find();
 
     return Row(
         mainAxisSize: MainAxisSize.max,
@@ -29,28 +28,18 @@ class HomeAppBar extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
-                    child: Text(
-                      "Welcome, ${authService.appUser.fullName}",
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: themeService.textColor54,
+                    child: Obx(
+                      () => Text(
+                        "Welcome, ${userDetailsController.fullName}",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: themeService.textColor54,
+                        ),
                       ),
                     ),
-                    //   child: Obx(
-                    //     () => Text(
-                    //       "Welcome, ${userDetailsController.fullName}",
-                    //       maxLines: 1,
-                    //       overflow: TextOverflow.ellipsis,
-                    //       style: TextStyle(
-                    //         fontSize: 16,
-                    //         fontWeight: FontWeight.w500,
-                    //         color: themeService.textColor54,
-                    //       ),
-                    //     ),
-                    //   ),
                   ),
                   SizedBox(height: 2.5),
                   Text(
@@ -63,59 +52,28 @@ class HomeAppBar extends StatelessWidget {
                   ),
                 ]),
           ),
-          // background profile picture
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(0),
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.blue[100],
-            ),
-            // height: MediaQuery.of(context).size.height - 100,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image(
-                image: AssetImage("assets/images/face.png"),
-                height: 30,
-                width: 30,
-                fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () => Get.to(() => const UserProfile()),
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(0),
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.blue[100],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image(
+                  image: AssetImage("assets/images/face.png"),
+                  height: 30,
+                  width: 30,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-          // Obx(() {
-          //   return GestureDetector(
-          //     // onTap: () => Get.to(() => const UserProfile()),
-          //     child: Container(
-          //       alignment: Alignment.center,
-          //       padding: EdgeInsets.all(0),
-          //       height: 50,
-          //       width: 50,
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(15),
-          //         color: Colors.blue[100],
-          //       ),
-          //       // height: MediaQuery.of(context).size.height - 100,
-          //       child: ClipRRect(
-          //         borderRadius: BorderRadius.circular(15),
-          //         child: userDetailsController.profileImageUrl.isNotEmpty
-          //             ? CachedNetworkImage(
-          //                 imageUrl: userDetailsController.profileImageUrl,
-          //                 height: 50,
-          //                 width: 50,
-          //                 fit: BoxFit.cover,
-          //               )
-          //             : Image(
-          //                 image: AssetImage("assets/images/face.png"),
-          //                 height: 30,
-          //                 width: 30,
-          //                 fit: BoxFit.cover,
-          //               ),
-          //       ),
-          //     ),
-          //   );
-          // }),
         ]);
   }
 }

@@ -3,7 +3,10 @@ import "package:prescamai/screens/auth/pages/auth_home.dart";
 // import "package:prescamai/screens/auth/pages/auth_home.dart";
 import "package:prescamai/screens/auth/pages/auth_wrapper.dart";
 import "package:prescamai/screens/home/home_wrapper.dart";
+import "package:prescamai/screens/profile/pages/edit_email.dart";
+import "package:prescamai/screens/profile/pages/edit_username.dart";
 import "package:prescamai/screens/settings/pages/privacy_policy.dart";
+import "package:prescamai/screens/settings/pages/settings_main.dart";
 import "package:prescamai/screens/settings/pages/settings_page_faq.dart";
 import "package:prescamai/screens/settings/pages/settings_page_information.dart";
 import "package:prescamai/screens/settings/pages/terms_and_conditions.dart";
@@ -50,17 +53,18 @@ Future navigateToSettingsFAQ() async {
   return await Get.to(() => SettingsFAQPage());
 }
 
-// Future navigateToSettingsMain() async {
-//   return await Get.to(() => SettingsMain(), transition: Transition.noTransition);
-// }
+Future navigateToSettingsMain() async {
+  return await Get.to(() => SettingsMain(),
+      transition: Transition.noTransition);
+}
 
-// Future navigateToEditUsername() async {
-//   return await Get.to(() => EditUsernamePage());
-// }
+Future navigateToEditUsername() async {
+  return await Get.to(() => EditUsernamePage());
+}
 
-// Future navigateToEditEmail() async {
-//   return await Get.to(() => EditEmailPage());
-// }
+Future navigateToEditEmail() async {
+  return await Get.to(() => EditEmailPage());
+}
 
 // Future navigateToEditAddress() async {
 //   return await Get.to(() => EditAddressPage());
