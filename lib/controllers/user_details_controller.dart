@@ -101,7 +101,9 @@ class UserDetailsController extends GetxController {
   }
 
   Future<void> updateScamComplete(Scam scam) async {
-    completedScamIDs.add(scam.id);
+    if (!completedScamIDs.contains(scam.id)) {
+      completedScamIDs.add(scam.id);
+    }
     isLoading(true);
     ReturnValue result =
         await _db.updateUser({"completedScamIDs": completedScamIDs});

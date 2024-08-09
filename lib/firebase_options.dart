@@ -3,6 +3,7 @@
 import "package:firebase_core/firebase_core.dart" show FirebaseOptions;
 import "package:flutter/foundation.dart"
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import "package:flutter_dotenv/flutter_dotenv.dart";
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,16 +50,16 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAi6nTy9ZNvzTC_8qPPljAD8ROB6DSl8do',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env["FB_ANDROID_API_KEY"]!,
     appId: '1:919564054860:android:4d7d035f438576ea285fe9',
     messagingSenderId: '919564054860',
     projectId: 'gemini-ai-dev-93332',
     storageBucket: 'gemini-ai-dev-93332.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBWUsps7YR2WOEOs0TNDyRo-k1whJgL2GM',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env["FB_IOS_API_KEY"]!,
     appId: '1:919564054860:ios:3041c3bd87e66765285fe9',
     messagingSenderId: '919564054860',
     projectId: 'gemini-ai-dev-93332',
