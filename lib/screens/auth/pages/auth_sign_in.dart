@@ -141,7 +141,7 @@ class _AuthSignInState extends State<AuthSignIn> {
                             SizedBox(height: 15),
                             MyFillButton(
                               // text: "Login with google",
-                              text: "Testing login",
+                              text: "Sign in with Google",
                               color: Color(0xFFedf8fc),
                               textColor: Colors.black87,
                               icon: Icon(
