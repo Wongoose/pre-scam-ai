@@ -29,9 +29,6 @@ class SettingsInformationPage extends StatelessWidget {
               text: "Privacy Policy",
               onPressed: () => navigateToPrivacyPolicy(),
             ),
-            SizedBox(height: 15),
-            MySettingsItem(
-                itemIcon: Icons.people_rounded, text: "Community Guidelines"),
           ],
         ),
       )),

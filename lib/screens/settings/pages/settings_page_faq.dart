@@ -4,10 +4,38 @@ import "package:prescamai/shared/my_page_appbar.dart";
 
 class SettingsFAQPage extends StatelessWidget {
   final List<List<String>> faqList = [
-    ["Example questions?", "Example descriptions..."],
-    ["What is this app about?", "Lorem ipsum"],
-    ["How do I register a new visitor?", "Lorem ipsum"],
-    ["Why does the app require my phone number?", "Lorem ipsum"],
+    [
+      "What is this app?",
+      "This app is an AI-driven simulator that educates users on common online scams, such as phishing, ransomware, and tech support scams."
+    ],
+    [
+      "How does the AI work?",
+      "The AI simulates real-life scam scenarios, helping users recognize red flags and learn how to protect themselves."
+    ],
+    [
+      "Can this app protect me from scams?",
+      "While the app cannot prevent scams, it equips you with the knowledge and awareness to spot and avoid them."
+    ],
+    [
+      "Why does the app simulate scams?",
+      "The app uses simulations to create a realistic learning environment, making it easier for users to understand and remember how to respond to scam attempts."
+    ],
+    [
+      "Is my data safe?",
+      "Yes, the app prioritizes user privacy and does not store any sensitive personal information."
+    ],
+    [
+      "How do I report a suspicious activity?",
+      "If you encounter a suspicious scenario, you can report it using the in-app reporting feature to help others stay informed."
+    ],
+    [
+      "Can I use the app offline?",
+      "No, an internet connection is required for the AI simulations and updates."
+    ],
+    [
+      "How often is the content updated?",
+      "The app regularly updates its scam scenarios to keep up with evolving tactics used by scammers."
+    ]
   ];
   SettingsFAQPage({super.key});
 

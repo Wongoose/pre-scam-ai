@@ -28,7 +28,7 @@ dependencies:
   cloud_firestore: ^5.2.1
   google_sign_in: ^6.2.1
   open_mail_app: ^0.4.5
-  webview_flutter: ^4.8.0
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   flutter_test:

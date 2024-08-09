@@ -8,27 +8,13 @@ class PrivacyPolicyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final WebViewController controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.disabled)
-      ..setBackgroundColor(const Color(0x00000000))
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onProgress: (int progress) {},
-          onPageStarted: (String url) {},
-          onPageFinished: (String url) {},
-          onHttpError: (HttpResponseError error) {},
-          onWebResourceError: (WebResourceError error) {},
-          onNavigationRequest: (NavigationRequest request) {
-            return NavigationDecision.navigate;
-          },
-        ),
-      )
-      ..loadRequest(
-          Uri.parse("https://prescamai.mystrikingly.com/privacy-policy"));
-
     return SafeArea(
       child: Scaffold(
-        body: WebViewWidget(controller: controller),
+        body: WebView(
+          initialUrl: "https://prescamai.mystrikingly.com/privacy-policy",
+          javascriptMode: JavascriptMode.disabled,
+          backgroundColor: Colors.white,
+        ),
         floatingActionButton: SizedBox(
           height: 50,
           width: 50,
