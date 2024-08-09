@@ -2,18 +2,17 @@
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:get/get.dart";
 import "package:flutter_chat_types/flutter_chat_types.dart" as types;
+import "package:prescamai/controllers/user_details_controller.dart";
 import "package:prescamai/models/scam_model.dart";
 import "package:uuid/uuid.dart";
 import "package:google_generative_ai/google_generative_ai.dart";
-
-enum ChatScamType { romance, pishing, none }
 
 enum QuizPrompt { none, waiting, ready }
 
 class ChatAIController extends GetxController {
   RxList<types.Message> messages = RxList<types.Message>();
   Rx<QuizPrompt> showQuizPrompt = QuizPrompt.none.obs;
-  ChatScamType scamType = ChatScamType.none;
+  final UserDetailsController userDetailsController = Get.find();
   final types.User user = types.User(id: "user");
   final types.User bot = types.User(id: "bot");
 
@@ -30,7 +29,7 @@ class ChatAIController extends GetxController {
         SafetySetting(HarmCategory.harassment, HarmBlockThreshold.none),
         SafetySetting(HarmCategory.sexuallyExplicit, HarmBlockThreshold.none),
         SafetySetting(HarmCategory.dangerousContent, HarmBlockThreshold.none),
-        SafetySetting(HarmCategory.hateSpeech, HarmBlockThreshold.none)
+        SafetySetting(HarmCategory.hateSpeech, HarmBlockThreshold.none),
       ],
       generationConfig: GenerationConfig(
         temperature: 1,
@@ -45,7 +44,7 @@ class ChatAIController extends GetxController {
 
     chat = model.startChat(history: [
       Content.multi([
-        TextPart(scam.exampleInput),
+        TextPart("Hi, I am ${userDetailsController.fullName}. My gender is ${userDetailsController.genderIsMale! ? "male" : "female"}"),
       ]),
       Content.model([
         TextPart(scam.exampleModel),
@@ -64,7 +63,8 @@ class ChatAIController extends GetxController {
 
   // Functions
   Future<void> loadMessages() async {
-    generateAIresponse("Hi, I am ZX");
+    generateAIresponse(
+        "Hi, I am ${userDetailsController.fullName}.");
   }
 
   void addMessage(types.Message message) {

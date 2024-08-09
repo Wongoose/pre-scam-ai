@@ -8,6 +8,7 @@ import "package:prescamai/models/scam_model.dart";
 import "package:prescamai/screens/chat/widgets/quiz_fab.dart";
 import "package:prescamai/shared/my_confirm_dialog.dart";
 import "package:prescamai/shared/my_page_appbar.dart";
+import "package:url_launcher/url_launcher.dart";
 
 class ChatPage extends StatefulWidget {
   final Scam scam;
@@ -23,6 +24,24 @@ class _ChatPageState extends State<ChatPage> {
   final ChatAIController chatAIController = Get.put(ChatAIController());
   final QuizController quizController = Get.put(QuizController());
   bool ignoreChat = false;
+
+  void _handleMessageTap(BuildContext _, message) async {
+    print(message.message.text);
+    final urlRegex = RegExp(r"https?:\/\/[^\s\[\]]+");
+
+    final urlMatch = urlRegex.firstMatch(message.message.text);
+    print("LAUNCH");
+
+    print("URL is $urlMatch");
+    if (urlMatch != null) {
+      final url = urlMatch.group(0);
+      print("URL is $url");
+      final Uri uri = Uri.parse(url!.trim());
+      if (!await launchUrl(uri)) {
+        throw Exception("Could not launch $uri");
+      }
+    }
+  }
 
   @override
   void initState() {
@@ -75,6 +94,7 @@ class _ChatPageState extends State<ChatPage> {
             showUserAvatars: true,
             showUserNames: true,
             customBottomWidget: ignoreChat ? Container() : null,
+            onMessageTap: _handleMessageTap,
             user: chatAIController.user,
             theme: themeService.themeMode == ThemeMode.dark
                 ? DarkChatTheme()
